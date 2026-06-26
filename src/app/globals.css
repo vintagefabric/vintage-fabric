@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Cormorant Garamond", Georgia, serif;
+    --font-sans: "Inter", system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-wine;
+  }
+}
+
+@layer components {
+  /* Page container */
+  .container-vf {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+
+  /* Primary (wine) button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-wine px-6 py-3
+           text-sm font-medium tracking-wide text-ivory shadow-sm transition-all
+           hover:bg-wine-dark hover:shadow-card focus:outline-none focus:ring-2
+           focus:ring-gold focus:ring-offset-2 focus:ring-offset-cream;
+  }
+
+  /* Accent (gold) button */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3
+           text-sm font-medium tracking-wide text-wine-dark shadow-sm transition-all
+           hover:bg-gold-light hover:shadow-card focus:outline-none focus:ring-2
+           focus:ring-wine focus:ring-offset-2 focus:ring-offset-cream;
+  }
+
+  /* Outline button (on light bg) */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-wine/40
+           px-6 py-3 text-sm font-medium tracking-wide text-wine transition-all
+           hover:border-wine hover:bg-wine hover:text-ivory focus:outline-none
+           focus:ring-2 focus:ring-gold;
+  }
+
+  /* A thin gold divider rule */
+  .rule-gold {
+    @apply h-0.5 w-14 rounded-full bg-gold;
+  }
+
+  /* Eyebrow / kicker label */
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark;
+  }
+}
+
+@layer utilities {
+  /*
+   * Woven-fabric texture: two fine diagonal thread layers that read as cloth
+   * weave. Sits over the wine hero at low opacity for a premium, tactile feel.
+   */
+  .fabric-weave {
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        rgba(244, 240, 220, 0.05) 0px,
+        rgba(244, 240, 220, 0.05) 1px,
+        transparent 1px,
+        transparent 7px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        rgba(244, 240, 220, 0.04) 0px,
+        rgba(244, 240, 220, 0.04) 1px,
+        transparent 1px,
+        transparent 7px
+      );
+  }
+
+  /* Woven texture in wine threads, for the light editorial hero. */
+  .fabric-weave-wine {
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        rgba(112, 32, 64, 0.05) 0px,
+        rgba(112, 32, 64, 0.05) 1px,
+        transparent 1px,
+        transparent 8px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        rgba(112, 32, 64, 0.04) 0px,
+        rgba(112, 32, 64, 0.04) 1px,
+        transparent 1px,
+        transparent 8px
+      );
+  }
+
+  /* Soft gold halo, used behind the hero logo. */
+  .gold-halo {
+    background: radial-gradient(
+      circle at center,
+      rgba(208, 144, 48, 0.45) 0%,
+      rgba(208, 144, 48, 0.12) 35%,
+      transparent 68%
+    );
+  }
+
+  /*
+   * Soft wine glow behind the hero logo. Gives the gold mandala a darker field
+   * to read against (so the pale highlight areas of the artwork don't blend
+   * into the cream) without a hard circle edge.
+   */
+  .wine-halo {
+    background: radial-gradient(
+      circle at center,
+      rgba(112, 32, 64, 0.55) 0%,
+      rgba(112, 32, 64, 0.5) 46%,
+      rgba(112, 32, 64, 0.22) 64%,
+      rgba(112, 32, 64, 0.08) 76%,
+      transparent 85%
+    );
+    filter: blur(6px);
+  }
+
+  /* Gentle, continuous float for the hero logo. */
+  .animate-float {
+    animation: vf-float 6s ease-in-out infinite;
+  }
+
+  /* Slow breathing glow for the halo behind the logo. */
+  .animate-halo {
+    animation: vf-halo 6s ease-in-out infinite;
+  }
+}
+
+@keyframes vf-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes vf-halo {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.06);
+  }
+}
+
+/* Auto-flowing design ribbon (marquee). The track holds two copies of the
+   list, so animating to -50% loops seamlessly. */
+@keyframes vf-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: vf-marquee 45s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-halo,
+  .marquee-track {
+    animation: none;
+  }
+}
