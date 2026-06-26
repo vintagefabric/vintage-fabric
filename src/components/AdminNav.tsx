@@ -22,15 +22,15 @@ export function AdminNav() {
   }
 
   return (
-    <div className="mb-8 flex flex-wrap items-center justify-between gap-3 border-b border-line pb-4">
-      <nav className="flex flex-wrap gap-1" aria-label="Admin">
+    <div className="mb-8 flex items-center gap-2 border-b border-line pb-4">
+      <nav className="no-scrollbar flex flex-1 gap-1 overflow-x-auto" aria-label="Admin">
         {LINKS.map((l) => {
           const active = pathname === l.href;
           return (
             <Link
               key={l.href}
               href={l.href}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+              className={`shrink-0 whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium transition-colors sm:px-4 ${
                 active ? "bg-wine text-ivory" : "text-wine hover:bg-wine/10"
               }`}
             >
@@ -39,7 +39,7 @@ export function AdminNav() {
           );
         })}
       </nav>
-      <button onClick={logout} className="btn-outline !py-2">
+      <button onClick={logout} className="btn-outline shrink-0 !px-4 !py-2">
         Sign out
       </button>
     </div>

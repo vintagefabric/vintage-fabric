@@ -66,6 +66,15 @@
 }
 
 @layer utilities {
+  /* Hide the scrollbar on horizontally-scrollable rows (e.g. admin nav). */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   /*
    * Woven-fabric texture: two fine diagonal thread layers that read as cloth
    * weave. Sits over the wine hero at low opacity for a premium, tactile feel.
