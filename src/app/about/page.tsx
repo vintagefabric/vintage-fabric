@@ -80,7 +80,7 @@ export default function AboutPage() {
           </div>
 
           <div className="flex justify-center">
-            <LogoMark size={300} />
+            <LogoMark size={300} className="h-auto w-[200px] sm:w-[260px] lg:w-[300px]" />
           </div>
         </div>
       </Section>

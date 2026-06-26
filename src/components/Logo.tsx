@@ -8,7 +8,15 @@ import Image from "next/image";
  * The image lives at /public/logo.png. It's a self-contained medallion, so it
  * needs no extra background or ring around it.
  */
-export function LogoMark({ size = 96 }: { size?: number; withWordmark?: boolean }) {
+export function LogoMark({
+  size = 96,
+  className,
+}: {
+  size?: number;
+  withWordmark?: boolean;
+  /** When set, overrides the fixed size with responsive Tailwind classes. */
+  className?: string;
+}) {
   return (
     <Image
       src="/logo.png"
@@ -16,8 +24,8 @@ export function LogoMark({ size = 96 }: { size?: number; withWordmark?: boolean 
       width={size}
       height={size}
       priority={size >= 200}
-      className="h-auto w-auto"
-      style={{ width: size, height: size }}
+      className={className ?? "h-auto w-auto"}
+      style={className ? undefined : { width: size, height: size }}
     />
   );
 }

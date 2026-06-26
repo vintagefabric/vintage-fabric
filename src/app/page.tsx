@@ -57,13 +57,13 @@ export default async function HomePage() {
           </div>
 
           {/* Logo medallion sitting directly on the background, with a soft gold halo */}
-          <div className="relative flex justify-center lg:justify-end">
+          <div className="relative mt-4 flex justify-center lg:mt-0 lg:justify-end">
             <div
-              className="gold-halo animate-halo pointer-events-none absolute inset-0 m-auto h-[26rem] w-[26rem]"
+              className="gold-halo animate-halo pointer-events-none absolute inset-0 m-auto h-[15rem] w-[15rem] sm:h-[20rem] sm:w-[20rem] lg:h-[26rem] lg:w-[26rem]"
               aria-hidden="true"
             />
             <div className="animate-float relative">
-              <LogoMark size={320} />
+              <LogoMark size={330} className="h-auto w-[200px] sm:w-[260px] lg:w-[330px]" />
             </div>
           </div>
         </div>
@@ -76,7 +76,7 @@ export default async function HomePage() {
       {/* ── Our fabrics (by fabric type) ─────────────────────── */}
       <Section>
         <div className="container-vf">
-          <div className="flex items-end justify-between gap-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
             <SectionHeading
               eyebrow="What we make"
               title="Our fabrics"
@@ -124,7 +124,7 @@ export default async function HomePage() {
       {/* ── Latest series ────────────────────────────────────── */}
       <Section>
         <div className="container-vf">
-          <div className="flex items-end justify-between gap-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
             <SectionHeading eyebrow="Design series" title="Latest collections" />
             <ArrowLink href="/collections">All collections</ArrowLink>
           </div>
