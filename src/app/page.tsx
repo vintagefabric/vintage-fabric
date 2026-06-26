@@ -34,14 +34,16 @@ export default async function HomePage() {
               {BRAND.tagline}
             </span>
             <h1 className="mt-5 text-5xl leading-[1.04] text-wine sm:text-6xl">
-              Quality fabrics,
+              Quality Fabrics,
               <br />
-              crafted to be worn.
+              crafted to be worn…
             </h1>
-            <div className="rule-gold mt-6" />
+            <div className="mt-6 h-1 w-full rounded-full bg-gold" />
             <p className="mt-6 max-w-md text-lg text-ink-soft">
-              Premium printed and foil fabrics for kurti, dress, co-ord and
-              3-piece sets. Made in India, shipped to buyers worldwide.
+              Premium printed and foil fabrics for kurti, dress,{" "}
+              <span className="whitespace-nowrap">co-ord</span> and{" "}
+              <span className="whitespace-nowrap">3-piece</span> sets. Made in
+              India, shipped to buyers worldwide.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/collections" className="btn-primary">
