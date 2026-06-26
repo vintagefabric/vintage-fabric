@@ -97,7 +97,7 @@ export default function ContactPage() {
           <div className="overflow-hidden rounded-xl border border-ink/10 shadow-card">
             <iframe
               title="Vintage Fabric location, New Cloth Market, Ahmedabad"
-              src="https://www.google.com/maps?q=New%20Cloth%20Market%2C%20Raipur%2C%20Ahmedabad%2C%20Gujarat%20380002&output=embed"
+              src="https://www.google.com/maps?q=Vintage+Fabric,+New+Cloth+Market,+146,+Raipur,+Ahmedabad,+Gujarat+380002&ftid=0x395e8517289c6e45:0x99be5a6dd45b4d07&output=embed"
               className="h-full min-h-[420px] w-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
