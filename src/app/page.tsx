@@ -33,12 +33,14 @@ export default async function HomePage() {
             <span className="inline-flex items-center gap-2 rounded-full border border-gold/50 bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-gold-dark">
               {BRAND.tagline}
             </span>
-            <h1 className="mt-5 text-5xl leading-[1.04] text-wine sm:text-6xl">
-              Quality Fabrics,
-              <br />
-              crafted to be worn…
-            </h1>
-            <div className="mt-6 h-1 w-full rounded-full bg-gold" />
+            <div className="mt-5 w-fit">
+              <h1 className="text-5xl leading-[1.04] text-wine sm:text-6xl">
+                Quality Fabrics,
+                <br />
+                crafted to be worn…
+              </h1>
+              <div className="mt-6 h-1 w-full rounded-full bg-gold" />
+            </div>
             <p className="mt-6 max-w-md text-lg text-ink-soft">
               Premium printed and foil fabrics for kurti, dress,{" "}
               <span className="whitespace-nowrap">co-ord</span> and{" "}
