@@ -438,53 +438,71 @@ export const designs: Design[] = [
 // ── Journal (launch articles) ──────────────────────────────────────────────
 export const journal: JournalPost[] = [
   {
-    id: "j-cambric-care",
-    title: "How to Care for Cambric & Cotton Print Fabrics",
-    slug: "care-for-cambric-cotton-print-fabrics",
+    id: "j-series",
+    title: "Why We Design in Series",
+    slug: "why-we-design-in-series",
     excerpt:
-      "Simple washing and storage tips to keep printed cambric and cotton looking fresh, season after season.",
-    tags: ["fabric care", "cambric", "cotton"],
-    publishedAt: "2026-01-15",
-    body: `Cambric and fine cotton prints reward a little gentle care.
+      "We design in series rather than scatter one-off prints. What that means for the shelf, the reorder and the story a retailer tells.",
+    tags: ["collections", "behind the scenes"],
+    publishedAt: "2026-06-16",
+    body: `It would be easier, in some ways, to chase one good print at a time. A pretty design comes along, you run it, you sell it, you move on. Plenty of the trade works exactly that way. We have chosen not to, and the reason has everything to do with the buyer standing at a shelf.
 
-**Washing.** Use cold water and a mild detergent for the first few washes; turn printed garments inside out to protect foil and procian prints. Avoid harsh bleaching.
+We design in series (UNIVERSE, SOULITAIRE, INDRIYA, SUNSHINE), and each one carries its own mood. UNIVERSE is floral and printed, contemporary, easy to wear and easy to sell across regions. SOULITAIRE is foil and discharge, deep and jewel-like, made for the buyer who wants something premium. INDRIYA is the complete three-piece, a plain dhabhu base and a printed dupatta ready to stitch. SUNSHINE is bright cambric, foil-topped and matched, our sunniest range, and our best-selling. They are not four random moods; they are four shelves a retailer can build around.
 
-**Drying.** Dry in shade. Direct, prolonged sun can dull bright procian colours over time.
+That is really the whole point of working in series. A retailer who stocks a series gets a set of designs that hang together, in widths and finishes that match, with a single clear story to tell the customer in front of them. "This is the SUNSHINE range" is an easier thing to say, and an easier thing to buy into, than a wall of unrelated prints. The shelf looks considered because it was considered.
 
-**Ironing.** Iron on the reverse side at a medium setting. For foil designs, place a thin cloth between the iron and the foil.
-
-**Storage.** Keep folded in a cool, dry place. A breathable cotton bag is better than plastic for long-term storage.
-
-Treated this way, a good cambric procian print holds its colour and hand-feel for years, which is exactly what buyers expect from a quality fabric.`,
+It helps the dull, important work too. Series come with clean design numbers, which is what makes a reorder quick and exact six months later. A buyer does not have to describe a fabric from memory; they give us a D.No. and a series, and we know precisely what they mean. Most of our business is repeat business, and a tidy series is part of how we earn the second order, which, the way we see it, is the only order that really counts.`,
     seo: {
-      title: "How to Care for Cambric & Cotton Print Fabrics | Vintage Fabric",
+      title: "Why We Design in Series | Vintage Fabric",
       description:
-        "Washing, drying, ironing and storage tips for printed cambric and cotton fabrics from Vintage Fabric.",
-      keywords: ["fabric care", "how to wash cambric", "cotton print care"],
+        "We design in series rather than scatter one-off prints. Here is what that means for the shelf, the reorder and the story a retailer tells.",
+      keywords: ["fabric collections", "design series", "co-ord series"],
     },
   },
   {
-    id: "j-coord-trend",
-    title: "Why Co-Ord Sets Are Winning in Ethnic Wear",
-    slug: "why-co-ord-sets-are-winning-ethnic-wear",
+    id: "j-base-cloth",
+    title: "Cambric or Dhabhu: Choosing the Base Cloth",
+    slug: "cambric-or-dhabhu-choosing-base-cloth",
     excerpt:
-      "Matched top-and-bottom sets sell themselves. Here's why co-ords keep gaining ground with retailers and buyers.",
-    tags: ["trends", "co-ord"],
-    publishedAt: "2026-02-10",
-    body: `Co-ord sets, a printed top with a coordinated or contrasting bottom, have moved from a trend to a staple.
+      "Both are honest cottons, but they behave differently under a print and on the body. A plain guide to choosing the right base.",
+    tags: ["fabric", "guide", "cotton"],
+    publishedAt: "2026-05-12",
+    body: `No amount of finishing rescues a poor base cloth. We have said that elsewhere and we mean it, which is why the choice of base is the first decision in any fabric we make, long before the print is even discussed. For most of our range that choice comes down to two 100% cotton grounds: cambric and dhabhu. Both are honest cottons. They are not interchangeable.
 
-**They're easy to sell.** A matched set removes the guesswork for the end customer; the styling is already done.
+Cambric is the lighter, finer of the two. It takes a fine print crisply, carries a foil well, and sits close and easy on the body, which is why so much of our cambric procian and our brighter co-ords are built on it. If you are selling kurtis, dress materials and co-ord sets where the print needs to read sharp and the cloth needs to feel light through a long day, cambric is usually the answer.
 
-**They photograph well.** A complete look is more compelling online than a single panel of fabric.
+Dhabhu has more substance to it. It holds a plain ground beautifully and gives a three-piece set the kind of body that a kurti base wants, which is exactly why INDRIYA pairs plain dhabhu kurti bases with a printed dupatta. A dhabhu plain is doing a different job from a cambric print; it is the steady, structured half of an outfit, the part the dupatta is allowed to be loud against.
 
-**They suit every region.** Floral, striped, foil or discharge, the same co-ord format flexes across markets, which is why series like UNIVERSE and SOULITAIRE travel so well.
-
-For wholesalers and exporters, co-ords mean higher average order value and a cleaner range. That's a trend worth stocking.`,
+The honest way to choose between them is to start from the garment and the market, not from the cloth. A light, print-led range leans towards cambric. A structured three-piece or a plain base meant to be stitched up wants dhabhu. If you tell us the garment you have in mind and the market you are selling into, we will tell you which base we would put it on, and why; and if a sample would settle it faster than a conversation, we will send one.`,
     seo: {
-      title: "Why Co-Ord Sets Are Winning in Ethnic Wear | Vintage Fabric",
+      title: "Cambric or Dhabhu: Choosing the Base Cloth | Vintage Fabric",
       description:
-        "A look at why coordinated top-and-bottom fabric sets keep gaining ground with retailers and exporters.",
-      keywords: ["co-ord trend", "ethnic wear trends", "co-ord set wholesale"],
+        "Cambric and dhabhu are both honest cotton bases, but they behave differently under a print and on the body. A plain guide to choosing between them.",
+      keywords: ["cambric vs dhabhu", "cotton base cloth", "kurti base fabric"],
+    },
+  },
+  {
+    id: "j-finishes",
+    title: "Foil, Discharge and Procian: A Plain Guide to Our Finishes",
+    slug: "foil-discharge-procian-finishes-guide",
+    excerpt:
+      "Procian, discharge and foil. A plain explanation of the three finishes behind our range and what each one does on the cloth.",
+    tags: ["finishes", "guide", "fabric"],
+    publishedAt: "2026-04-08",
+    body: `Most of the character in our range comes from three finishes, and a buyer who understands the difference between them stocks better and sells with more confidence. None of this is technical for its own sake; it is simply what is happening on the cloth in your hand.
+
+A procian print is the everyday backbone of the range. The colour is laid into the cotton and, done properly, it stays bright through a wash and sits true on the body. It is the finish that lets a floral look like a floral after a season of wear rather than a faded memory of one. The whole quality of a procian print rests on two unglamorous things: a base cloth that takes the dye cleanly, and not rushing the print. We hold to both.
+
+Discharge work goes at it from the other direction. Instead of adding colour onto a pale ground, the design is brought out of an already-dyed cloth, which gives those deep, settled tones you see across SOULITAIRE. It is a finish that rewards patience and punishes haste, and it is where a fabric earns the word premium honestly rather than on a label.
+
+Foil is the one that catches the eye first. It is the shine, the jewel-like lift on a co-ord that makes a customer stop at the shelf. Foil also asks for a little respect in return: a cooler iron, a cloth laid over it, a gentler wash, and we say so plainly rather than letting a buyer find out the hard way. Looked after, it holds its shine on the shelf and on the body for a long time.
+
+In practice you rarely choose one finish in isolation. A SUNSHINE co-ord might carry a procian heavy print on the bottom and a foil top above it; a SOULITAIRE piece leans on discharge for its depth. Knowing which finish is doing what is simply knowing what you are selling, and that is usually the difference between a buyer who reorders and one who guesses.`,
+    seo: {
+      title: "Foil, Discharge and Procian: A Plain Guide to Our Finishes | Vintage Fabric",
+      description:
+        "A plain explanation of the three finishes behind our range, procian print, discharge and foil, and what each one does on the cloth and on the body.",
+      keywords: ["fabric finishes", "foil fabric", "discharge print", "procian print"],
     },
   },
   {
@@ -492,25 +510,69 @@ For wholesalers and exporters, co-ords mean higher average order value and a cle
     title: "A Short Guide to Sourcing Fabrics from India for Export",
     slug: "sourcing-fabrics-from-india-export-guide",
     excerpt:
-      "What international buyers should know about widths, compositions and lead times when sourcing from Ahmedabad.",
+      "The questions worth settling before your first order from Ahmedabad: width, composition, finish, lead times and design numbers.",
     tags: ["export", "guide"],
     publishedAt: "2026-03-05",
-    body: `India remains one of the world's great fabric sources, and Ahmedabad is at the centre of it.
+    body: `Sourcing fabric from India is mostly straightforward once you know which questions to ask before the first order, rather than after it. We work out of New Cloth Market in Ahmedabad, one of the busiest cloth markets in the country, and the buyers who have the smoothest time are almost always the ones who pin down a few specifics early.
 
-**Know your width.** Most of our qualities run 56" or 58". Confirm width up front, since it affects yield and garment costing.
+Start with width, because width is where a lot of quiet trouble lives. Most of our range runs at 56 or 58 inches, and the number on the spec sheet only matters if it holds from the start of the roll to the end, this lot and the next. Ask how width is checked, not just what it is. A fabric that drifts half an inch across a consignment will cost a garment maker far more in wasted cutting than they ever saved on the cloth.
 
-**Composition matters.** Our prints are on 100% cotton bases like cambric and dhabhu. Ask for the exact composition for your customs and labelling needs.
+Composition is the next thing to settle plainly. Our bases are 100% cotton, cambric and dhabhu mostly, chosen because they take a print cleanly and still feel right in the hand after stitching. Be specific about the base you want, because cambric and dhabhu behave differently under a print and on the body, and the right choice depends on your market and the garment.
 
-**Mind the finish.** Foil and discharge finishes look spectacular but have specific care needs, share these with your end customers.
+Finishes deserve their own line in any conversation. Procian prints, foil and discharge work each travel and wash a little differently, and a buyer shipping abroad should know what to expect from each so there are no surprises at the far end. Ask for a sample, and where you can, wash it. A sample tells you more in an afternoon than a specification does in a week.
 
-**Lead times & MOQs.** Talk to us early about quantities and timelines so we can plan production around your shipping windows.
-
-When in doubt, request our catalog and send an inquiry, we'll guide you through what suits your market.`,
+After that it comes down to lead times, design numbers and reorders. We will tell you honestly what is running, what is available in the widths you need, and what we can make to order, along with a realistic timeline rather than a hopeful one. Keep a note of the design numbers you stock; a clean D.No. is what makes a reorder quick and exact months later. And settle the routine details (GST and export documentation, sampling, packing) before the bulk, not during it. Sorted up front, an India order is dependable. The buyers who treat the second order as the real test, as we do, tend to find the whole thing easy.`,
     seo: {
       title: "Sourcing Fabrics from India for Export | Vintage Fabric",
       description:
-        "A practical guide for international buyers on widths, compositions, finishes and lead times when sourcing fabrics from Ahmedabad.",
+        "What international buyers should confirm on widths, compositions, finishes and lead times when sourcing printed and foil cotton from Ahmedabad.",
       keywords: ["fabric sourcing India", "export fabric guide", "buy fabric from Ahmedabad"],
+    },
+  },
+  {
+    id: "j-coord-trend",
+    title: "Why Co-Ord Sets Are Winning in Ethnic Wear",
+    slug: "why-co-ord-sets-are-winning-ethnic-wear",
+    excerpt:
+      "A matched top and bottom removes the guesswork for the customer, which is why co-ords keep gaining ground with retailers and exporters.",
+    tags: ["trends", "co-ord"],
+    publishedAt: "2026-02-10",
+    body: `There was a time when a retailer bought fabric by the panel and left the rest to the customer's imagination. A printed length here, a plain bottom somewhere else, and the woman standing at the counter had to picture the whole garment before she was willing to buy any part of it. Co-ord sets quietly put an end to that. A printed top with a bottom chosen to sit beside it, sold as a single decision. It is a small idea, but it changed the way a shelf works.
+
+We make a good deal of co-ord now, across UNIVERSE and SOULITAIRE in particular, and the reason has less to do with fashion than with arithmetic. A matched set is easier to sell because the hard part, the styling, is already done. The retailer is not asking a customer to imagine anything. She can see the whole look, and most of the time she buys the whole look.
+
+It also photographs well, which matters more every year. A complete top-and-bottom shows far better in a WhatsApp catalogue or an online listing than a single flat panel of cloth ever could. And the format travels. The same co-ord idea carries a soft floral for one market and a deep foil discharge for another without changing what the buyer has to stock or how they sell it.
+
+For a wholesaler or an exporter, that adds up to a higher average order and a tidier range. The one thing it depends on is discipline at our end. A co-ord only works if the two halves genuinely belong together: the same true width, colours that read as a pair under the same light, finishes that wear at the same rate. Get that wrong and you have two unrelated fabrics in one packet. Get it right, lot after lot, and the set sells itself.`,
+    seo: {
+      title: "Why Co-Ord Sets Are Winning in Ethnic Wear | Vintage Fabric",
+      description:
+        "Why coordinated top-and-bottom fabric sets keep gaining ground with retailers and exporters, from the manufacturer's bench and the shop floor.",
+      keywords: ["co-ord trend", "ethnic wear trends", "co-ord set wholesale"],
+    },
+  },
+  {
+    id: "j-cambric-care",
+    title: "How to Care for Cambric & Cotton Print Fabrics",
+    slug: "care-for-cambric-cotton-print-fabrics",
+    excerpt:
+      "Cold water, drying in shade and a cloth over the foil. The simple care that keeps printed cambric and cotton bright for years.",
+    tags: ["fabric care", "cambric", "cotton"],
+    publishedAt: "2026-01-15",
+    body: `A good cambric print is honest cotton with a print that has been given time to set properly. Treat it that way and it will hold its colour and its hand for years. Most of the damage we ever hear about comes from the first few washes, when the garment is new and the owner is least careful with it.
+
+For those early washes, cold water and a mild detergent do far more good than they get credit for. Turn printed pieces inside out before they go in; it is the simplest way to keep a foil or a procian print away from the rubbing that dulls it. Harsh bleaches and strong powders have no place near a printed cotton; they take the brightness off faster than wear ever will.
+
+Drying is where procian colour is quietly won or lost. Dry in shade. A long stretch in direct sun will fade a bright print over a season in a way that no wash does, and once it has gone flat there is no bringing it back. The shade costs nothing and saves the colour.
+
+When it comes to ironing, work on the reverse, at a medium setting. For anything with foil, lay a thin cloth between the iron and the design; foil and a hot plate do not forgive each other. And for storage, fold and keep the cloth somewhere cool and dry. A breathable cotton bag is better than plastic for the long term; plastic traps moisture, and trapped moisture is how marks and musty smells begin.
+
+None of this is complicated, and none of it is new. It is simply the care a quality cotton was always meant to have, and the same care that lets a buyer's customer come back and say the fabric lasted.`,
+    seo: {
+      title: "How to Care for Cambric & Cotton Print Fabrics | Vintage Fabric",
+      description:
+        "How to wash, dry, iron and store printed cambric and cotton so the colour and hand-feel hold for years.",
+      keywords: ["fabric care", "how to wash cambric", "cotton print care"],
     },
   },
 ];
