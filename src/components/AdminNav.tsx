@@ -9,7 +9,7 @@ const LINKS = [
   { href: "/admin/designs/new", label: "Add design" },
   { href: "/admin/series/new", label: "New series" },
   { href: "/admin/fabrics/new", label: "New fabric" },
-  { href: "/admin/journal/new", label: "New journal" },
+  { href: "/admin/journal", label: "Journal" },
 ];
 
 /** Shared admin navigation + sign out, shown on every authed admin page. */

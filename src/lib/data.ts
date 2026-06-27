@@ -207,6 +207,9 @@ export async function getJournalPosts(): Promise<JournalPost[]> {
 export async function getJournalPostBySlug(slug: string): Promise<JournalPost | undefined> {
   return (await allJournal()).find((p) => p.slug === slug);
 }
+export async function getJournalPostById(id: string): Promise<JournalPost | undefined> {
+  return (await allJournal()).find((p) => p.id === id);
+}
 
 // ── Convenience: a design with its related rows resolved ───────────────────
 export async function getDesignContext(design: Design) {
