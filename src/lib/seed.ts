@@ -443,7 +443,7 @@ export const journal: JournalPost[] = [
     slug: "why-we-design-in-series",
     excerpt:
       "We design in series rather than scatter one-off prints. What that means for the shelf, the reorder and the story a retailer tells.",
-    tags: ["collections", "behind the scenes"],
+    tags: ["fabric collections", "wholesale", "behind the scenes"],
     publishedAt: "2026-06-16",
     body: `It would be easier, in some ways, to chase one good print at a time. A pretty design comes along, you run it, you sell it, you move on. Plenty of the trade works exactly that way. We have chosen not to, and the reason has everything to do with the buyer standing at a shelf.
 
@@ -456,7 +456,12 @@ It helps the dull, important work too. Series come with clean design numbers, wh
       title: "Why We Design in Series | Vintage Fabric",
       description:
         "We design in series rather than scatter one-off prints. Here is what that means for the shelf, the reorder and the story a retailer tells.",
-      keywords: ["fabric collections", "design series", "co-ord series"],
+      keywords: [
+        "fabric design series",
+        "co-ord fabric collections wholesale",
+        "ethnic wear fabric supplier Ahmedabad",
+        "kurti fabric manufacturer India",
+      ],
     },
   },
   {
@@ -465,7 +470,7 @@ It helps the dull, important work too. Series come with clean design numbers, wh
     slug: "cambric-or-dhabhu-choosing-base-cloth",
     excerpt:
       "Both are honest cottons, but they behave differently under a print and on the body. A plain guide to choosing the right base.",
-    tags: ["fabric", "guide", "cotton"],
+    tags: ["cambric", "dhabhu", "cotton fabric", "buying guide"],
     publishedAt: "2026-05-12",
     body: `No amount of finishing rescues a poor base cloth. We have said that elsewhere and we mean it, which is why the choice of base is the first decision in any fabric we make, long before the print is even discussed. For most of our range that choice comes down to two 100% cotton grounds: cambric and dhabhu. Both are honest cottons. They are not interchangeable.
 
@@ -478,7 +483,12 @@ The honest way to choose between them is to start from the garment and the marke
       title: "Cambric or Dhabhu: Choosing the Base Cloth | Vintage Fabric",
       description:
         "Cambric and dhabhu are both honest cotton bases, but they behave differently under a print and on the body. A plain guide to choosing between them.",
-      keywords: ["cambric vs dhabhu", "cotton base cloth", "kurti base fabric"],
+      keywords: [
+        "cambric vs dhabhu fabric",
+        "cotton base cloth for kurti",
+        "best cotton fabric for ethnic wear",
+        "dhabhu plain fabric wholesale",
+      ],
     },
   },
   {
@@ -487,7 +497,7 @@ The honest way to choose between them is to start from the garment and the marke
     slug: "foil-discharge-procian-finishes-guide",
     excerpt:
       "Procian, discharge and foil. A plain explanation of the three finishes behind our range and what each one does on the cloth.",
-    tags: ["finishes", "guide", "fabric"],
+    tags: ["foil print", "discharge print", "procian print", "fabric finishes"],
     publishedAt: "2026-04-08",
     body: `Most of the character in our range comes from three finishes, and a buyer who understands the difference between them stocks better and sells with more confidence. None of this is technical for its own sake; it is simply what is happening on the cloth in your hand.
 
@@ -502,7 +512,12 @@ In practice you rarely choose one finish in isolation. A SUNSHINE co-ord might c
       title: "Foil, Discharge and Procian: A Plain Guide to Our Finishes | Vintage Fabric",
       description:
         "A plain explanation of the three finishes behind our range, procian print, discharge and foil, and what each one does on the cloth and on the body.",
-      keywords: ["fabric finishes", "foil fabric", "discharge print", "procian print"],
+      keywords: [
+        "foil print fabric",
+        "discharge print fabric",
+        "procian print cotton",
+        "types of fabric finishes",
+      ],
     },
   },
   {
@@ -511,7 +526,7 @@ In practice you rarely choose one finish in isolation. A SUNSHINE co-ord might c
     slug: "sourcing-fabrics-from-india-export-guide",
     excerpt:
       "The questions worth settling before your first order from Ahmedabad: width, composition, finish, lead times and design numbers.",
-    tags: ["export", "guide"],
+    tags: ["export", "sourcing", "buyer guide"],
     publishedAt: "2026-03-05",
     body: `Sourcing fabric from India is mostly straightforward once you know which questions to ask before the first order, rather than after it. We work out of New Cloth Market in Ahmedabad, one of the busiest cloth markets in the country, and the buyers who have the smoothest time are almost always the ones who pin down a few specifics early.
 
@@ -526,7 +541,12 @@ After that it comes down to lead times, design numbers and reorders. We will tel
       title: "Sourcing Fabrics from India for Export | Vintage Fabric",
       description:
         "What international buyers should confirm on widths, compositions, finishes and lead times when sourcing printed and foil cotton from Ahmedabad.",
-      keywords: ["fabric sourcing India", "export fabric guide", "buy fabric from Ahmedabad"],
+      keywords: [
+        "sourcing fabric from India",
+        "fabric export from Ahmedabad",
+        "buy cotton fabric wholesale India",
+        "import printed fabric from India",
+      ],
     },
   },
   {
@@ -535,7 +555,7 @@ After that it comes down to lead times, design numbers and reorders. We will tel
     slug: "why-co-ord-sets-are-winning-ethnic-wear",
     excerpt:
       "A matched top and bottom removes the guesswork for the customer, which is why co-ords keep gaining ground with retailers and exporters.",
-    tags: ["trends", "co-ord"],
+    tags: ["co-ord sets", "trends", "retail"],
     publishedAt: "2026-02-10",
     body: `There was a time when a retailer bought fabric by the panel and left the rest to the customer's imagination. A printed length here, a plain bottom somewhere else, and the woman standing at the counter had to picture the whole garment before she was willing to buy any part of it. Co-ord sets quietly put an end to that. A printed top with a bottom chosen to sit beside it, sold as a single decision. It is a small idea, but it changed the way a shelf works.
 
@@ -548,7 +568,12 @@ For a wholesaler or an exporter, that adds up to a higher average order and a ti
       title: "Why Co-Ord Sets Are Winning in Ethnic Wear | Vintage Fabric",
       description:
         "Why coordinated top-and-bottom fabric sets keep gaining ground with retailers and exporters, from the manufacturer's bench and the shop floor.",
-      keywords: ["co-ord trend", "ethnic wear trends", "co-ord set wholesale"],
+      keywords: [
+        "co-ord set fabric wholesale",
+        "coordinated ethnic wear fabric",
+        "matching top and bottom fabric",
+        "ethnic wear fabric trends",
+      ],
     },
   },
   {
@@ -557,7 +582,7 @@ For a wholesaler or an exporter, that adds up to a higher average order and a ti
     slug: "care-for-cambric-cotton-print-fabrics",
     excerpt:
       "Cold water, drying in shade and a cloth over the foil. The simple care that keeps printed cambric and cotton bright for years.",
-    tags: ["fabric care", "cambric", "cotton"],
+    tags: ["fabric care", "cambric", "cotton care"],
     publishedAt: "2026-01-15",
     body: `A good cambric print is honest cotton with a print that has been given time to set properly. Treat it that way and it will hold its colour and its hand for years. Most of the damage we ever hear about comes from the first few washes, when the garment is new and the owner is least careful with it.
 
@@ -572,7 +597,12 @@ None of this is complicated, and none of it is new. It is simply the care a qual
       title: "How to Care for Cambric & Cotton Print Fabrics | Vintage Fabric",
       description:
         "How to wash, dry, iron and store printed cambric and cotton so the colour and hand-feel hold for years.",
-      keywords: ["fabric care", "how to wash cambric", "cotton print care"],
+      keywords: [
+        "how to wash cambric fabric",
+        "cotton print fabric care",
+        "how to wash foil print fabric",
+        "prevent fabric colour fading",
+      ],
     },
   },
 ];
