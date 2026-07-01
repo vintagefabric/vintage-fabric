@@ -16,7 +16,7 @@ const DOCS: Record<string, { title: string; intro: string; sections: { h: string
     sections: [
       {
         h: "What we collect",
-        p: "When you send an inquiry or request our catalog, we collect the details you provide, typically your name, company, country, email, phone and message.",
+        p: "When you send an inquiry or request our catalogue, we collect the details you provide, typically your name, company, country, email, phone and message.",
       },
       {
         h: "How we use it",

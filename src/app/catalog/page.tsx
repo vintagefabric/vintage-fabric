@@ -5,11 +5,11 @@ import { LeadForm } from "@/components/LeadForm";
 import { Section, SectionHeading } from "@/components/ui";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Catalog Center",
+  title: "Catalogue Centre",
   description:
-    "Download the Vintage Fabric catalog & lookbooks. Share your details and get instant access to our latest collections.",
+    "Download the Vintage Fabric catalogue and lookbooks. Share your details and get instant access to our latest collections.",
   path: "/catalog",
-  keywords: ["fabric catalog", "fabric lookbook download", "Vintage Fabric catalog"],
+  keywords: ["fabric catalogue", "fabric lookbook download", "Vintage Fabric catalogue"],
 });
 
 /**
@@ -23,14 +23,14 @@ export default function CatalogPage() {
   return (
     <>
       <div className="container-vf pt-8">
-        <Breadcrumbs items={[{ name: "Catalog", path: "/catalog" }]} />
+        <Breadcrumbs items={[{ name: "Catalogue", path: "/catalog" }]} />
       </div>
       <Section className="!pt-8">
         <div className="container-vf grid gap-12 lg:grid-cols-[1fr_minmax(0,520px)]">
           <div>
             <SectionHeading
-              eyebrow="Catalog center"
-              title="Download our catalog"
+              eyebrow="Catalogue centre"
+              title="Download our catalogue"
               intro="Get the latest Vintage Fabric lookbook with every series, including design numbers, fabric types and widths. Just tell us where to send it."
             />
             <ul className="mt-8 space-y-3 text-sm text-ink-soft">

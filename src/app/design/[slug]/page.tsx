@@ -136,7 +136,7 @@ export default async function DesignPage({ params }: { params: Promise<Params> }
               </Link>
               <WhatsAppButton message={inquiryMsg} />
               <Link href="/catalog" className="btn-outline">
-                Request catalog
+                Request catalogue
               </Link>
             </div>
           </div>

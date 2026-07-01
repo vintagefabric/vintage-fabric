@@ -100,6 +100,63 @@ export async function POST(req: Request) {
   return NextResponse.json({ ok: true, slug });
 }
 
+/** PUT /api/admin/designs — edit a design's content (slug stays the same). */
+export async function PUT(req: Request) {
+  if (!(await isAdmin())) {
+    return NextResponse.json({ ok: false, error: "Not authorized." }, { status: 401 });
+  }
+  const supabase = getSupabaseAdmin();
+  if (!supabase) {
+    return NextResponse.json({ ok: false, error: "Supabase not configured." }, { status: 500 });
+  }
+
+  const editSchema = designSchema.extend({ id: z.string().trim().min(1) });
+  const parsed = editSchema.safeParse(await req.json().catch(() => null));
+  if (!parsed.success) {
+    return NextResponse.json(
+      { ok: false, error: "Validation failed.", issues: parsed.error.flatten() },
+      { status: 422 },
+    );
+  }
+  const d = parsed.data;
+
+  const [{ data: quality }, { data: existing }] = await Promise.all([
+    supabase.from("qualities").select("code,category_id").eq("id", d.qualityId).single(),
+    supabase.from("designs").select("slug").eq("id", d.id).single(),
+  ]);
+  if (!quality) {
+    return NextResponse.json({ ok: false, error: "Unknown fabric quality." }, { status: 422 });
+  }
+  if (!existing) {
+    return NextResponse.json({ ok: false, error: "Design not found." }, { status: 404 });
+  }
+
+  const { error } = await supabase
+    .from("designs")
+    .update({
+      title: d.title,
+      design_no: d.designNo,
+      category_id: quality.category_id,
+      quality_id: d.qualityId,
+      collection_id: d.collectionId,
+      images: d.images,
+      description: d.description || null,
+      status: d.status,
+    })
+    .eq("id", d.id);
+  if (error) {
+    console.error("[admin/designs] update failed:", error.message);
+    return NextResponse.json({ ok: false, error: "Could not update the design." }, { status: 500 });
+  }
+
+  revalidatePath("/");
+  revalidatePath("/fabrics");
+  revalidatePath(`/fabric/${quality.code}`);
+  revalidatePath("/collections");
+  revalidatePath(`/design/${existing.slug}`);
+  return NextResponse.json({ ok: true, slug: existing.slug });
+}
+
 /** PATCH /api/admin/designs?id=...&status=published|draft — change publish state. */
 export async function PATCH(req: Request) {
   if (!(await isAdmin())) {
@@ -138,6 +195,10 @@ export async function DELETE(req: Request) {
   }
   const id = new URL(req.url).searchParams.get("id");
   if (!id) return NextResponse.json({ ok: false, error: "Missing id." }, { status: 400 });
+
+  // Remove any collection_items link first (seed designs have one), else the
+  // foreign key blocks the delete.
+  await supabase.from("collection_items").delete().eq("design_id", id);
 
   const { error } = await supabase.from("designs").delete().eq("id", id);
   if (error) {

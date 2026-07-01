@@ -52,7 +52,7 @@ export default async function HomePage() {
                 Explore collections
               </Link>
               <Link href="/inquiry" className="btn-gold">
-                Request a catalog
+                Request a catalogue
               </Link>
             </div>
             <p className="mt-6 text-sm text-ink-soft">
@@ -195,7 +195,7 @@ export default async function HomePage() {
             <SectionHeading
               center
               eyebrow="Let's work together"
-              title="Request our catalog or send an inquiry"
+              title="Request our catalogue or send an inquiry"
               intro="Tell us your market and the qualities you're after, and we'll get back with options, widths and lead times."
             />
             <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -203,7 +203,7 @@ export default async function HomePage() {
                 Send an inquiry
               </Link>
               <Link href="/catalog" className="btn-outline">
-                Download catalog
+                Download catalogue
               </Link>
               <WhatsAppButton />
             </div>

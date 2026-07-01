@@ -35,6 +35,21 @@ export const metadata: Metadata = {
       { url: "/favicon.svg", type: "image/svg+xml" },
     ],
   },
+  openGraph: {
+    type: "website",
+    siteName: BRAND.name,
+    title: SITE_NAME,
+    description:
+      "Premium printed and foil fabrics for kurti, dress, co-ord and 3-piece sets. Made in India, shipped worldwide.",
+    url: SITE_URL,
+    images: [{ url: "/og.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_NAME,
+    description: "Premium printed and foil fabrics. Made in India, shipped worldwide.",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({

@@ -167,6 +167,10 @@ export async function getQualitiesByCategory(categoryId: string): Promise<Qualit
 export async function getCollections(): Promise<Collection[]> {
   return (await allCollections()).filter((c) => c.status === "published");
 }
+/** All collections incl. drafts — for the admin manager only. */
+export async function getAllCollections(): Promise<Collection[]> {
+  return allCollections();
+}
 export async function getCollectionBySlug(slug: string): Promise<Collection | undefined> {
   return (await allCollections()).find((c) => c.slug === slug);
 }
@@ -184,6 +188,9 @@ export async function getAllDesigns(): Promise<Design[]> {
 }
 export async function getDesignBySlug(slug: string): Promise<Design | undefined> {
   return (await allDesigns()).find((d) => d.slug === slug);
+}
+export async function getDesignById(id: string): Promise<Design | undefined> {
+  return (await allDesigns()).find((d) => d.id === id);
 }
 export async function getDesignsByCategory(categoryId: string): Promise<Design[]> {
   return (await getDesigns()).filter((d) => d.categoryId === categoryId);

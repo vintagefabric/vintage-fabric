@@ -153,6 +153,12 @@ export function DesignsAdminList({ designs }: { designs: AdminDesignRow[] }) {
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex justify-end gap-2">
+                      <Link
+                        href={`/admin/designs/${d.id}/edit`}
+                        className="rounded-full border border-wine/40 px-3 py-1.5 text-xs font-medium text-wine transition-colors hover:bg-wine/10"
+                      >
+                        Edit
+                      </Link>
                       {d.status === "published" ? (
                         <button
                           onClick={() => setStatus(d, "unpublished")}

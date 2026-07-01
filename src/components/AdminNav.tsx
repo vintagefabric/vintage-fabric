@@ -6,9 +6,8 @@ import { usePathname, useRouter } from "next/navigation";
 const LINKS = [
   { href: "/admin", label: "Leads" },
   { href: "/admin/designs", label: "Designs" },
-  { href: "/admin/designs/new", label: "Add design" },
-  { href: "/admin/series/new", label: "New series" },
-  { href: "/admin/fabrics/new", label: "New fabric" },
+  { href: "/admin/series", label: "Series" },
+  { href: "/admin/fabrics", label: "Fabrics" },
   { href: "/admin/journal", label: "Journal" },
 ];
 
@@ -26,7 +25,8 @@ export function AdminNav() {
     <div className="mb-8 flex items-center gap-2 border-b border-line pb-4">
       <nav className="no-scrollbar flex flex-1 gap-1 overflow-x-auto" aria-label="Admin">
         {LINKS.map((l) => {
-          const active = pathname === l.href;
+          const active =
+            l.href === "/admin" ? pathname === "/admin" : pathname.startsWith(l.href);
           return (
             <Link
               key={l.href}

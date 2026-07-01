@@ -28,6 +28,8 @@ export function buildMetadata({
 }): Metadata {
   const url = abs(path);
   const fullTitle = title.includes(BRAND.name) ? title : `${title} | ${BRAND.name}`;
+  // Fall back to the branded social image when a page has no specific one.
+  const ogImage = image ?? "/og.png";
   return {
     // `absolute` bypasses the root layout's title template so the brand
     // suffix isn't appended twice.
@@ -41,13 +43,13 @@ export function buildMetadata({
       url,
       siteName: BRAND.name,
       type: "website",
-      images: image ? [{ url: image }] : undefined,
+      images: [{ url: ogImage }],
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: image ? [image] : undefined,
+      images: [ogImage],
     },
   };
 }

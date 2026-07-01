@@ -99,7 +99,7 @@ export async function POST(req: Request) {
   // 3) Build a prefilled WhatsApp deep link to the Accounts (office) number.
   const waText = `Hello Vintage Fabric, this is ${data.name}${
     data.company ? ` from ${data.company}` : ""
-  }. ${data.type === "catalog" ? "I'd like your catalog." : "I have an inquiry."}${
+  }. ${data.type === "catalog" ? "I'd like your catalogue." : "I have an inquiry."}${
     data.ref ? ` (Ref: ${data.ref})` : ""
   }`;
 

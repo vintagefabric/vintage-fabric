@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { uploadToCloudinary } from "@/lib/cloudinary-upload";
+import type { Collection } from "@/lib/types";
 
 const inputClass =
   "mt-1 w-full rounded-lg border border-ink/20 bg-white px-3 py-2.5 text-ink " +
@@ -12,9 +14,10 @@ const fileClass =
   "mt-1 block w-full text-sm text-ink-soft file:mr-3 file:rounded-full file:border-0 " +
   "file:bg-wine file:px-4 file:py-2 file:text-sm file:font-medium file:text-ivory hover:file:bg-wine-dark";
 
-/** Create a new catalogue series (collection). */
-export function AddSeriesForm() {
+/** Create or edit a catalogue series (collection). Pass `series` to edit. */
+export function AddSeriesForm({ series }: { series?: Collection }) {
   const router = useRouter();
+  const isEdit = Boolean(series);
   const [status, setStatus] = useState<"idle" | "working" | "done" | "error">("idle");
   const [progress, setProgress] = useState("");
   const [error, setError] = useState("");
@@ -30,26 +33,35 @@ export function AddSeriesForm() {
     const statusVal = String(fd.get("status") || "published");
     const hero = fd.get("hero") as File | null;
 
-    if (!hero || hero.size === 0) {
+    if (!isEdit && (!hero || hero.size === 0)) {
       setError("A cover image is required.");
       setStatus("error");
       return;
     }
 
     try {
-      setProgress("Uploading cover image…");
-      const heroImage = await uploadToCloudinary(hero);
+      let heroImage = series?.heroImage ?? "";
+      if (hero && hero.size > 0) {
+        setProgress("Uploading cover image…");
+        heroImage = await uploadToCloudinary(hero);
+      }
 
       setProgress("Saving series…");
       const res = await fetch("/api/admin/collections", {
-        method: "POST",
+        method: isEdit ? "PATCH" : "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, description, heroImage, status: statusVal }),
+        body: JSON.stringify({
+          ...(isEdit ? { id: series!.id } : {}),
+          title,
+          description,
+          heroImage,
+          status: statusVal,
+        }),
       });
       const json = await res.json();
       if (!res.ok || !json.ok) throw new Error(json.error || "Could not save the series.");
 
-      form.reset();
+      if (!isEdit) form.reset();
       setStatus("done");
       router.refresh();
     } catch (err) {
@@ -61,12 +73,12 @@ export function AddSeriesForm() {
   if (status === "done") {
     return (
       <div className="rounded-2xl border border-gold/40 bg-white p-8 text-center shadow-card">
-        <h2 className="text-2xl">Series created</h2>
+        <h2 className="text-2xl">{isEdit ? "Series updated" : "Series created"}</h2>
         <div className="rule-gold mx-auto mt-3" />
-        <p className="mt-4 text-ink-soft">It's now available when adding designs.</p>
+        <p className="mt-4 text-ink-soft">It's live on the site.</p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <button onClick={() => setStatus("idle")} className="btn-primary">Add another</button>
-          <Link href="/admin/designs/new" className="btn-outline">Add a design</Link>
+          <Link href="/admin/series" className="btn-primary">Back to series</Link>
+          {!isEdit && <button onClick={() => setStatus("idle")} className="btn-outline">Add another</button>}
         </div>
       </div>
     );
@@ -76,19 +88,26 @@ export function AddSeriesForm() {
     <form onSubmit={onSubmit} className="rounded-2xl border border-ink/10 bg-white p-6 shadow-card sm:p-8">
       <label className="block text-sm">
         <span className="font-medium text-ink">Series name *</span>
-        <input name="title" required className={inputClass} placeholder="e.g. SUNSHINE" />
+        <input name="title" required defaultValue={series?.title} className={inputClass} placeholder="e.g. SUNSHINE" />
       </label>
       <label className="mt-5 block text-sm">
         <span className="font-medium text-ink">Description</span>
-        <textarea name="description" rows={3} className={inputClass} placeholder="A short description of the series." />
+        <textarea name="description" rows={3} defaultValue={series?.description} className={inputClass} placeholder="A short description of the series." />
       </label>
-      <label className="mt-5 block text-sm">
-        <span className="font-medium text-ink">Cover image *</span>
-        <input type="file" name="hero" accept="image/*" required className={fileClass} />
-      </label>
+
+      <div className="mt-5">
+        <span className="text-sm font-medium text-ink">Cover image {isEdit ? "(leave blank to keep current)" : "*"}</span>
+        {isEdit && series?.heroImage && (
+          <div className="relative mt-2 h-24 w-32 overflow-hidden rounded-lg border border-line">
+            <Image src={series.heroImage} alt="Current cover" fill sizes="128px" className="object-cover" />
+          </div>
+        )}
+        <input type="file" name="hero" accept="image/*" required={!isEdit} className={fileClass} />
+      </div>
+
       <label className="mt-5 block text-sm">
         <span className="font-medium text-ink">Status</span>
-        <select name="status" defaultValue="published" className={inputClass}>
+        <select name="status" defaultValue={series?.status ?? "published"} className={inputClass}>
           <option value="published">Published (visible on site)</option>
           <option value="draft">Draft (hidden)</option>
         </select>
@@ -100,7 +119,7 @@ export function AddSeriesForm() {
       )}
 
       <button type="submit" disabled={status === "working"} className="btn-primary mt-6 w-full sm:w-auto">
-        {status === "working" ? "Saving…" : "Create series"}
+        {status === "working" ? "Saving…" : isEdit ? "Save changes" : "Create series"}
       </button>
     </form>
   );

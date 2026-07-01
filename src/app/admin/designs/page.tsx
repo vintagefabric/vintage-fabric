@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { isAdmin } from "@/lib/admin";
-import { getAllDesigns, getCollections, getQualities } from "@/lib/data";
+import { getAllCollections, getAllDesigns, getQualities } from "@/lib/data";
 import { AdminNav } from "@/components/AdminNav";
 import { DesignsAdminList, type AdminDesignRow } from "@/components/DesignsAdminList";
 
@@ -14,7 +14,7 @@ export default async function AdminDesignsPage() {
 
   const [designs, collections, qualities] = await Promise.all([
     getAllDesigns(),
-    getCollections(),
+    getAllCollections(),
     getQualities(),
   ]);
   const seriesById = new Map(collections.map((c) => [c.id, c.title]));

@@ -65,13 +65,13 @@ export function LeadForm({
         <div className="rule-gold mx-auto mt-4" />
         <p className="mt-5 text-ink-soft">
           {type === "catalog"
-            ? "Your catalog is ready below. We've also noted your details and will be in touch."
+            ? "Your catalogue is ready below. We've also noted your details and will be in touch."
             : "We've received your inquiry and will get back to you shortly."}
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
           {type === "catalog" && catalogUrl && (
             <a href={catalogUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
-              Download catalog
+              Download catalogue
             </a>
           )}
           {whatsapp && (
@@ -154,7 +154,7 @@ export function LeadForm({
         {status === "loading"
           ? "Sending…"
           : type === "catalog"
-            ? "Get the catalog"
+            ? "Get the catalogue"
             : "Send inquiry"}
       </button>
       <p className="mt-3 text-xs text-ink-soft">
