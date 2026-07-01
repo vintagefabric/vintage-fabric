@@ -90,7 +90,7 @@ export const categories: Category[] = [
 export const qualities: Quality[] = [
   {
     id: "q-cambric-procian-heavy",
-    name: "60×60 Cambric Procian Heavy Print",
+    name: "60×60 Cambric Procion Heavy Print",
     code: "cambric-procian-heavy-print",
     slug: "cambric-procian-heavy-print",
     fabricType: "60×60 Cambric",
@@ -98,12 +98,12 @@ export const qualities: Quality[] = [
     composition: "100% Cotton",
     foil: true,
     categoryId: "cat-coord",
-    heroImage: ph("vf-q-cambric", "Cambric procian heavy print fabric close-up").url,
+    heroImage: ph("vf-q-cambric", "Cambric Procion heavy print fabric close-up").url,
     seo: {
-      title: "60×60 Cambric Procian Heavy Print | Vintage Fabric",
+      title: "60×60 Cambric Procion Heavy Print | Vintage Fabric",
       description:
-        "60×60 cambric procian heavy print, 58\" width, 100% cotton, foil finish. A signature Vintage Fabric quality.",
-      keywords: ["cambric fabric", "procian print", "60x60 cambric", "foil print fabric"],
+        "60×60 cambric Procion heavy print, 58\" width, 100% cotton, foil finish. A signature Vintage Fabric quality.",
+      keywords: ["cambric fabric", "Procion print", "60x60 cambric", "foil print fabric"],
     },
   },
   {
@@ -138,7 +138,7 @@ export const qualities: Quality[] = [
     seo: {
       title: "Dhabhu Plain Cotton | Vintage Fabric",
       description:
-        "Dhabhu plain cotton kurti base, 58\" width, paired with procian printed dupattas in the INDRIYA 3-piece sets.",
+        "Dhabhu plain cotton kurti base, 58\" width, paired with Procion printed dupattas in the INDRIYA 3-piece sets.",
       keywords: ["dhabhu plain", "plain cotton kurti fabric", "kurti base fabric"],
     },
   },
@@ -204,7 +204,7 @@ export const collections: Collection[] = [
     status: "published",
     heroImage: ph("vf-indriya", "INDRIYA series fabric collection").url,
     description:
-      "Three-piece sets pairing plain dhabhu kurti bases with procian printed dupattas, a complete, ready-to-stitch look.",
+      "Three-piece sets pairing plain dhabhu kurti bases with Procion printed dupattas, a complete, ready-to-stitch look.",
     seo: {
       title: "INDRIYA Series | Vintage Fabric",
       description:
@@ -220,11 +220,11 @@ export const collections: Collection[] = [
     status: "published",
     heroImage: ph("vf-sunshine", "SUNSHINE series fabric collection").url,
     description:
-      "Bright cambric procian heavy prints with foil tops and matched bottoms, our sunniest, best-selling co-ords.",
+      "Bright cambric Procion heavy prints with foil tops and matched bottoms, our sunniest, best-selling co-ords.",
     seo: {
       title: "SUNSHINE Series | Vintage Fabric",
       description:
-        "The SUNSHINE series: 60×60 cambric procian heavy print co-ord sets by Vintage Fabric.",
+        "The SUNSHINE series: 60×60 cambric Procion heavy print co-ord sets by Vintage Fabric.",
       keywords: ["SUNSHINE series", "cambric co-ord", "heavy print co-ord set"],
     },
   },
@@ -315,7 +315,7 @@ export const designs: Design[] = [
   },
   {
     id: "d-indriya-6212",
-    title: "INDRIYA 3-Piece, Dhabhu Plain-9 + Procian Dupatta",
+    title: "INDRIYA 3-Piece, Dhabhu Plain-9 + Procion Dupatta",
     slug: "indriya-3-piece-dhabhu-plain-9-6212",
     designNo: "Dhabhu Plain-9 + Dupatta D.No. 6212",
     categoryId: "cat-3piece",
@@ -323,10 +323,10 @@ export const designs: Design[] = [
     collectionId: "col-indriya",
     status: "published",
     description:
-      "A 3-piece set: a Dhabhu Plain-9 kurti base with a procian printed dupatta (D.No. 6212) and matching bottom.",
+      "A 3-piece set: a Dhabhu Plain-9 kurti base with a Procion printed dupatta (D.No. 6212) and matching bottom.",
     images: {
       front: ph("vf-d-6212-f", "INDRIYA 3-piece Dhabhu Plain-9, kurti front view"),
-      dupatta: ph("vf-d-6212-d", "INDRIYA procian printed dupatta D.No. 6212"),
+      dupatta: ph("vf-d-6212-d", "INDRIYA Procion printed dupatta D.No. 6212"),
       colourways: [
         ph("vf-d-6212-c1", "INDRIYA 6212, blush colourway", 600, 800),
         ph("vf-d-6212-c2", "INDRIYA 6212, sage colourway", 600, 800),
@@ -335,7 +335,7 @@ export const designs: Design[] = [
   },
   {
     id: "d-indriya-6210",
-    title: "INDRIYA 3-Piece, Dhabhu Plain-5 + Procian Dupatta",
+    title: "INDRIYA 3-Piece, Dhabhu Plain-5 + Procion Dupatta",
     slug: "indriya-3-piece-dhabhu-plain-5-6210",
     designNo: "Dhabhu Plain-5 + Dupatta D.No. 6210",
     categoryId: "cat-3piece",
@@ -343,10 +343,10 @@ export const designs: Design[] = [
     collectionId: "col-indriya",
     status: "published",
     description:
-      "A 3-piece set: a Dhabhu Plain-5 kurti base with a procian printed dupatta (D.No. 6210) and matching bottom.",
+      "A 3-piece set: a Dhabhu Plain-5 kurti base with a Procion printed dupatta (D.No. 6210) and matching bottom.",
     images: {
       front: ph("vf-d-6210-f", "INDRIYA 3-piece Dhabhu Plain-5, kurti front view"),
-      dupatta: ph("vf-d-6210-d", "INDRIYA procian printed dupatta D.No. 6210"),
+      dupatta: ph("vf-d-6210-d", "INDRIYA Procion printed dupatta D.No. 6210"),
       colourways: [
         ph("vf-d-6210-c1", "INDRIYA 6210, peach colourway", 600, 800),
         ph("vf-d-6210-c2", "INDRIYA 6210, slate colourway", 600, 800),
@@ -363,7 +363,7 @@ export const designs: Design[] = [
     collectionId: "col-sunshine",
     status: "published",
     description:
-      "The SUNSHINE signature: a 60×60 cambric procian heavy print co-ord, foil top (507) with matched bottom (105) on 58\" cotton.",
+      "The SUNSHINE signature: a 60×60 cambric Procion heavy print co-ord, foil top (507) with matched bottom (105) on 58\" cotton.",
     images: {
       front: ph("vf-d-507-f", "SUNSHINE cambric co-ord Top 507, front view"),
       back: ph("vf-d-507-b", "SUNSHINE cambric co-ord Top 507, back view"),
@@ -384,7 +384,7 @@ export const designs: Design[] = [
     collectionId: "col-sunshine",
     status: "published",
     description:
-      "A companion SUNSHINE design, 60×60 cambric procian heavy print with a foil top (512) and matched bottom (110).",
+      "A companion SUNSHINE design, 60×60 cambric Procion heavy print with a foil top (512) and matched bottom (110).",
     images: {
       front: ph("vf-d-512-f", "SUNSHINE cambric co-ord Top 512, front view"),
       back: ph("vf-d-512-b", "SUNSHINE cambric co-ord Top 512, back view"),
@@ -424,7 +424,7 @@ export const designs: Design[] = [
     collectionId: "col-sunshine",
     status: "published",
     description:
-      "A flowing cambric dress material with a heavy procian print, a versatile single-piece option for ready-to-wear.",
+      "A flowing cambric dress material with a heavy Procion print, a versatile single-piece option for ready-to-wear.",
     images: {
       front: ph("vf-d-880-f", "SUNSHINE cambric dress material D.No. 880, front view"),
       colourways: [
@@ -474,7 +474,7 @@ It helps the dull, important work too. Series come with clean design numbers, wh
     publishedAt: "2026-05-12",
     body: `No amount of finishing rescues a poor base cloth. We have said that elsewhere and we mean it, which is why the choice of base is the first decision in any fabric we make, long before the print is even discussed. For most of our range that choice comes down to two 100% cotton grounds: cambric and dhabhu. Both are honest cottons. They are not interchangeable.
 
-Cambric is the lighter, finer of the two. It takes a fine print crisply, carries a foil well, and sits close and easy on the body, which is why so much of our cambric procian and our brighter co-ords are built on it. If you are selling kurtis, dress materials and co-ord sets where the print needs to read sharp and the cloth needs to feel light through a long day, cambric is usually the answer.
+Cambric is the lighter, finer of the two. It takes a fine print crisply, carries a foil well, and sits close and easy on the body, which is why so much of our cambric Procion and our brighter co-ords are built on it. If you are selling kurtis, dress materials and co-ord sets where the print needs to read sharp and the cloth needs to feel light through a long day, cambric is usually the answer.
 
 Dhabhu has more substance to it. It holds a plain ground beautifully and gives a three-piece set the kind of body that a kurti base wants, which is exactly why INDRIYA pairs plain dhabhu kurti bases with a printed dupatta. A dhabhu plain is doing a different job from a cambric print; it is the steady, structured half of an outfit, the part the dupatta is allowed to be loud against.
 
@@ -493,29 +493,29 @@ The honest way to choose between them is to start from the garment and the marke
   },
   {
     id: "j-finishes",
-    title: "Foil, Discharge and Procian: A Plain Guide to Our Finishes",
+    title: "Foil, Discharge and Procion: A Plain Guide to Our Finishes",
     slug: "foil-discharge-procian-finishes-guide",
     excerpt:
-      "Procian, discharge and foil. A plain explanation of the three finishes behind our range and what each one does on the cloth.",
-    tags: ["foil print", "discharge print", "procian print", "fabric finishes"],
+      "Procion, discharge and foil. A plain explanation of the three finishes behind our range and what each one does on the cloth.",
+    tags: ["foil print", "discharge print", "Procion print", "fabric finishes"],
     publishedAt: "2026-04-08",
     body: `Most of the character in our range comes from three finishes, and a buyer who understands the difference between them stocks better and sells with more confidence. None of this is technical for its own sake; it is simply what is happening on the cloth in your hand.
 
-A procian print is the everyday backbone of the range. The colour is laid into the cotton and, done properly, it stays bright through a wash and sits true on the body. It is the finish that lets a floral look like a floral after a season of wear rather than a faded memory of one. The whole quality of a procian print rests on two unglamorous things: a base cloth that takes the dye cleanly, and not rushing the print. We hold to both.
+A Procion print is the everyday backbone of the range. The colour is laid into the cotton and, done properly, it stays bright through a wash and sits true on the body. It is the finish that lets a floral look like a floral after a season of wear rather than a faded memory of one. The whole quality of a Procion print rests on two unglamorous things: a base cloth that takes the dye cleanly, and not rushing the print. We hold to both.
 
 Discharge work goes at it from the other direction. Instead of adding colour onto a pale ground, the design is brought out of an already-dyed cloth, which gives those deep, settled tones you see across SOULITAIRE. It is a finish that rewards patience and punishes haste, and it is where a fabric earns the word premium honestly rather than on a label.
 
 Foil is the one that catches the eye first. It is the shine, the jewel-like lift on a co-ord that makes a customer stop at the shelf. Foil also asks for a little respect in return: a cooler iron, a cloth laid over it, a gentler wash, and we say so plainly rather than letting a buyer find out the hard way. Looked after, it holds its shine on the shelf and on the body for a long time.
 
-In practice you rarely choose one finish in isolation. A SUNSHINE co-ord might carry a procian heavy print on the bottom and a foil top above it; a SOULITAIRE piece leans on discharge for its depth. Knowing which finish is doing what is simply knowing what you are selling, and that is usually the difference between a buyer who reorders and one who guesses.`,
+In practice you rarely choose one finish in isolation. A SUNSHINE co-ord might carry a Procion heavy print on the bottom and a foil top above it; a SOULITAIRE piece leans on discharge for its depth. Knowing which finish is doing what is simply knowing what you are selling, and that is usually the difference between a buyer who reorders and one who guesses.`,
     seo: {
-      title: "Foil, Discharge and Procian: A Plain Guide to Our Finishes | Vintage Fabric",
+      title: "Foil, Discharge and Procion: A Plain Guide to Our Finishes | Vintage Fabric",
       description:
-        "A plain explanation of the three finishes behind our range, procian print, discharge and foil, and what each one does on the cloth and on the body.",
+        "A plain explanation of the three finishes behind our range, Procion print, discharge and foil, and what each one does on the cloth and on the body.",
       keywords: [
         "foil print fabric",
         "discharge print fabric",
-        "procian print cotton",
+        "Procion print cotton",
         "types of fabric finishes",
       ],
     },
@@ -534,7 +534,7 @@ Start with width, because width is where a lot of quiet trouble lives. Most of o
 
 Composition is the next thing to settle plainly. Our bases are 100% cotton, cambric and dhabhu mostly, chosen because they take a print cleanly and still feel right in the hand after stitching. Be specific about the base you want, because cambric and dhabhu behave differently under a print and on the body, and the right choice depends on your market and the garment.
 
-Finishes deserve their own line in any conversation. Procian prints, foil and discharge work each travel and wash a little differently, and a buyer shipping abroad should know what to expect from each so there are no surprises at the far end. Ask for a sample, and where you can, wash it. A sample tells you more in an afternoon than a specification does in a week.
+Finishes deserve their own line in any conversation. Procion prints, foil and discharge work each travel and wash a little differently, and a buyer shipping abroad should know what to expect from each so there are no surprises at the far end. Ask for a sample, and where you can, wash it. A sample tells you more in an afternoon than a specification does in a week.
 
 After that it comes down to lead times, design numbers and reorders. We will tell you honestly what is running, what is available in the widths you need, and what we can make to order, along with a realistic timeline rather than a hopeful one. Keep a note of the design numbers you stock; a clean D.No. is what makes a reorder quick and exact months later. And settle the routine details (GST and export documentation, sampling, packing) before the bulk, not during it. Sorted up front, an India order is dependable. The buyers who treat the second order as the real test, as we do, tend to find the whole thing easy.`,
     seo: {
@@ -586,9 +586,9 @@ For a wholesaler or an exporter, that adds up to a higher average order and a ti
     publishedAt: "2026-01-15",
     body: `A good cambric print is honest cotton with a print that has been given time to set properly. Treat it that way and it will hold its colour and its hand for years. Most of the damage we ever hear about comes from the first few washes, when the garment is new and the owner is least careful with it.
 
-For those early washes, cold water and a mild detergent do far more good than they get credit for. Turn printed pieces inside out before they go in; it is the simplest way to keep a foil or a procian print away from the rubbing that dulls it. Harsh bleaches and strong powders have no place near a printed cotton; they take the brightness off faster than wear ever will.
+For those early washes, cold water and a mild detergent do far more good than they get credit for. Turn printed pieces inside out before they go in; it is the simplest way to keep a foil or a Procion print away from the rubbing that dulls it. Harsh bleaches and strong powders have no place near a printed cotton; they take the brightness off faster than wear ever will.
 
-Drying is where procian colour is quietly won or lost. Dry in shade. A long stretch in direct sun will fade a bright print over a season in a way that no wash does, and once it has gone flat there is no bringing it back. The shade costs nothing and saves the colour.
+Drying is where Procion colour is quietly won or lost. Dry in shade. A long stretch in direct sun will fade a bright print over a season in a way that no wash does, and once it has gone flat there is no bringing it back. The shade costs nothing and saves the colour.
 
 When it comes to ironing, work on the reverse, at a medium setting. For anything with foil, lay a thin cloth between the iron and the design; foil and a hot plate do not forgive each other. And for storage, fold and keep the cloth somewhere cool and dry. A breathable cotton bag is better than plastic for the long term; plastic traps moisture, and trapped moisture is how marks and musty smells begin.
 
