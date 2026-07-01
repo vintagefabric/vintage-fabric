@@ -5,20 +5,18 @@ import { LeadForm } from "@/components/LeadForm";
 import { Section, SectionHeading } from "@/components/ui";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Catalogue Centre",
+  title: "Catalogue",
   description:
-    "Download the Vintage Fabric catalogue and lookbooks. Share your details and get instant access to our latest collections.",
+    "Request the Vintage Fabric catalogue. Share your details and we'll send our latest collections across.",
   path: "/catalog",
-  keywords: ["fabric catalogue", "fabric lookbook download", "Vintage Fabric catalogue"],
+  keywords: ["fabric catalogue", "fabric lookbook", "Vintage Fabric catalogue"],
 });
 
 /**
- * Catalog Center, a lead-gated download. The form captures name + email, then
- * returns the file URL in the thank-you state (plan §4/§7). Replace the
- * placeholder PDF in /public/catalog with the real lookbook when ready.
+ * Catalogue request. Captures name + email and we email the catalogue across.
+ * When a real PDF lookbook is ready, drop it in /public/catalog and pass its
+ * URL to <LeadForm catalogUrl=... /> to switch to an instant download.
  */
-const CATALOG_URL = "/catalog/vintage-fabric-catalog.pdf";
-
 export default function CatalogPage() {
   return (
     <>
@@ -29,9 +27,9 @@ export default function CatalogPage() {
         <div className="container-vf grid gap-12 lg:grid-cols-[1fr_minmax(0,520px)]">
           <div>
             <SectionHeading
-              eyebrow="Catalogue centre"
-              title="Download our catalogue"
-              intro="Get the latest Vintage Fabric lookbook with every series, including design numbers, fabric types and widths. Just tell us where to send it."
+              eyebrow="Catalogue"
+              title="Request our catalogue"
+              intro="Tell us where to send it and we'll email you the latest Vintage Fabric catalogue, with every series, its fabric types, widths and design numbers."
             />
             <ul className="mt-8 space-y-3 text-sm text-ink-soft">
               {[
@@ -47,7 +45,7 @@ export default function CatalogPage() {
             </ul>
           </div>
 
-          <LeadForm type="catalog" catalogUrl={CATALOG_URL} />
+          <LeadForm type="catalog" />
         </div>
       </Section>
     </>

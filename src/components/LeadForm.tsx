@@ -65,7 +65,9 @@ export function LeadForm({
         <div className="rule-gold mx-auto mt-4" />
         <p className="mt-5 text-ink-soft">
           {type === "catalog"
-            ? "Your catalogue is ready below. We've also noted your details and will be in touch."
+            ? catalogUrl
+              ? "Your catalogue is ready to download below."
+              : "Thank you. We'll email the catalogue across to you shortly."
             : "We've received your inquiry and will get back to you shortly."}
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
@@ -121,15 +123,17 @@ export function LeadForm({
           <span className="font-medium text-ink">Country</span>
           <input name="country" className={inputClass} placeholder="Where are you based?" />
         </label>
-        <label className="block text-sm">
-          <span className="font-medium text-ink">Interested in</span>
-          <input
-            name="interest"
-            defaultValue={refSlug ?? ""}
-            className={inputClass}
-            placeholder="Series, category or design no."
-          />
-        </label>
+        {type === "inquiry" && (
+          <label className="block text-sm">
+            <span className="font-medium text-ink">Interested in</span>
+            <input
+              name="interest"
+              defaultValue={refSlug ?? ""}
+              className={inputClass}
+              placeholder="Series or design no."
+            />
+          </label>
+        )}
       </div>
 
       <label className="mt-5 block text-sm">
@@ -154,7 +158,7 @@ export function LeadForm({
         {status === "loading"
           ? "Sending…"
           : type === "catalog"
-            ? "Get the catalogue"
+            ? "Request the catalogue"
             : "Send inquiry"}
       </button>
       <p className="mt-3 text-xs text-ink-soft">

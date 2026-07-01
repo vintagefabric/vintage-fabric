@@ -35,7 +35,7 @@ export default async function HomePage() {
             </span>
             <div className="mt-5 w-fit">
               <h1 className="text-5xl leading-[1.04] text-wine sm:text-6xl">
-                Quality Fabrics,
+                Quality Fabrics,{" "}
                 <br />
                 crafted to be worn…
               </h1>
@@ -203,7 +203,7 @@ export default async function HomePage() {
                 Send an inquiry
               </Link>
               <Link href="/catalog" className="btn-outline">
-                Download catalogue
+                Request the catalogue
               </Link>
               <WhatsAppButton />
             </div>
