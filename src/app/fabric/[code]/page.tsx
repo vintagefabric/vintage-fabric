@@ -63,7 +63,7 @@ export default async function FabricPage({ params }: { params: Promise<Params> }
 
       <Section className="!pt-8">
         <div className="container-vf">
-          <SectionHeading
+          <SectionHeading as="h1"
             eyebrow="Fabric type"
             title={quality.name}
             intro={quality.seo?.description}

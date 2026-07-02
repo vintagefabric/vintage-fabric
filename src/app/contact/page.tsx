@@ -23,7 +23,7 @@ export default function ContactPage() {
       <Section className="!pt-8">
         <div className="container-vf grid gap-12 lg:grid-cols-2">
           <div>
-            <SectionHeading
+            <SectionHeading as="h1"
               eyebrow="Get in touch"
               title="Contact us"
               intro="We welcome wholesale and export inquiries from buyers worldwide. Reach us by phone, email or WhatsApp."

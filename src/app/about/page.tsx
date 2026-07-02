@@ -25,7 +25,7 @@ export default function AboutPage() {
       <Section className="!pt-8">
         <div className="container-vf grid items-center gap-12 lg:grid-cols-[1.4fr_1fr]">
           <div>
-            <SectionHeading eyebrow="Our story" title="Mfg. of Quality Fabrics" />
+            <SectionHeading as="h1" eyebrow="Our story" title="Mfg. of Quality Fabrics" />
             <div className="mt-6 space-y-4 text-ink-soft">
               <p>
                 Vintage Fabric works out of New Cloth Market in Raipur, Ahmedabad,
@@ -47,7 +47,7 @@ export default function AboutPage() {
                 cloth that goes on to become kurtis, dresses, co-ord sets and
                 three-piece suits. Most of our range runs on 100% cotton bases such
                 as cambric and dhabhu, in 56 and 58 inch widths, finished with
-                procian prints, foil and discharge work.
+                Procion prints, foil and discharge work.
               </p>
               <p>
                 We prefer to design in series rather than scatter one-off prints.
@@ -111,7 +111,7 @@ export default function AboutPage() {
               poor base cloth.
             </p>
             <p>
-              Then the print. Our procian prints are matched to the design and to the
+              Then the print. Our Procion prints are matched to the design and to the
               base it sits on, and our foil and discharge work is where a lot of the
               character comes from. Those finishes look their best when they are not
               rushed, so we do not rush them.
@@ -145,7 +145,7 @@ export default function AboutPage() {
             },
             {
               t: "Finishing done right",
-              d: "Procian prints, foil and discharge work, given the patience these finishes need so the colour and shine hold up both on the shelf and on the body.",
+              d: "Procion prints, foil and discharge work, given the patience these finishes need so the colour and shine hold up both on the shelf and on the body.",
             },
             {
               t: "Made for export",

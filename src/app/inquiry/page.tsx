@@ -31,7 +31,7 @@ export default async function InquiryPage({
       <Section className="!pt-8">
         <div className="container-vf grid gap-12 lg:grid-cols-[1fr_minmax(0,520px)]">
           <div>
-            <SectionHeading
+            <SectionHeading as="h1"
               eyebrow="Let's work together"
               title="Send an inquiry"
               intro="Share a few details and we'll get back to you. Prefer to chat? Message us on WhatsApp and we usually reply quickly."

@@ -93,7 +93,7 @@ export function AddFabricForm({ fabric }: { fabric?: Quality }) {
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="block text-sm">
           <span className="font-medium text-ink">Fabric name *</span>
-          <input name="name" required defaultValue={fabric?.name} className={inputClass} placeholder="e.g. 60×60 Cambric Procian" />
+          <input name="name" required defaultValue={fabric?.name} className={inputClass} placeholder="e.g. 60×60 Cambric Procion" />
         </label>
         <label className="block text-sm">
           <span className="font-medium text-ink">Fabric type *</span>

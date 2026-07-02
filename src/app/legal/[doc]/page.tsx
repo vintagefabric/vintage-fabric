@@ -143,7 +143,7 @@ const DOCS: Record<string, LegalDoc> = {
       },
       {
         h: "Specifications",
-        p: "Most of our range runs at 56 or 58 inch widths on 100% cotton bases such as cambric and dhabhu, with procian prints and foil or discharge finishing. Exact width, composition and finish are confirmed per order for your costing, customs and labelling.",
+        p: "Most of our range runs at 56 or 58 inch widths on 100% cotton bases such as cambric and dhabhu, with Procion prints and foil or discharge finishing. Exact width, composition and finish are confirmed per order for your costing, customs and labelling.",
       },
       {
         h: "Samples",

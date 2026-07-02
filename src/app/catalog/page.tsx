@@ -26,7 +26,7 @@ export default function CatalogPage() {
       <Section className="!pt-8">
         <div className="container-vf grid gap-12 lg:grid-cols-[1fr_minmax(0,520px)]">
           <div>
-            <SectionHeading
+            <SectionHeading as="h1"
               eyebrow="Catalogue"
               title="Request our catalogue"
               intro="Tell us where to send it and we'll email you the latest Vintage Fabric catalogue, with every series, its fabric types, widths and design numbers."

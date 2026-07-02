@@ -25,7 +25,7 @@ export default async function CollectionsPage() {
       </div>
       <Section className="!pt-8">
         <div className="container-vf">
-          <SectionHeading
+          <SectionHeading as="h1"
             eyebrow="Design series"
             title="Collections"
             intro="Each series is a themed set of designs. Explore the story, then browse the fabrics."

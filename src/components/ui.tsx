@@ -12,22 +12,28 @@ export function Section({
   return <section className={`py-14 sm:py-20 ${className}`}>{children}</section>;
 }
 
-/** Eyebrow + heading + optional intro, used to open most sections. */
+/**
+ * Eyebrow + heading + optional intro, used to open most sections.
+ * Pass `as="h1"` when this is the page's main heading (each page should have
+ * exactly one h1 for SEO and screen readers).
+ */
 export function SectionHeading({
   eyebrow,
   title,
   intro,
   center = false,
+  as: Heading = "h2",
 }: {
   eyebrow?: string;
   title: string;
   intro?: string;
   center?: boolean;
+  as?: "h1" | "h2";
 }) {
   return (
     <div className={center ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
       {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      <h2 className="mt-2 text-3xl sm:text-4xl">{title}</h2>
+      <Heading className="mt-2 text-3xl sm:text-4xl">{title}</Heading>
       <div className={`rule-gold mt-4 ${center ? "mx-auto" : ""}`} />
       {intro && <p className="mt-5 text-ink-soft">{intro}</p>}
     </div>

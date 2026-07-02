@@ -9,7 +9,7 @@ import { Section, SectionHeading } from "@/components/ui";
 export const metadata: Metadata = buildMetadata({
   title: "Our Fabrics",
   description:
-    "Browse Vintage Fabric by fabric type: cambric procian, vertical discharge, dhabhu plain and cotton floral. Premium printed and foil fabrics for wholesale and export.",
+    "Browse Vintage Fabric by fabric type: cambric Procion, vertical discharge, dhabhu plain and cotton floral. Premium printed and foil fabrics for wholesale and export.",
   path: "/fabrics",
   keywords: ["cambric fabric", "discharge print fabric", "dhabhu plain", "cotton print fabric", "fabric types"],
 });
@@ -25,7 +25,7 @@ export default async function FabricsPage() {
       </div>
       <Section className="!pt-8">
         <div className="container-vf">
-          <SectionHeading
+          <SectionHeading as="h1"
             eyebrow="What we make"
             title="Our Fabrics"
             intro="Source by fabric type. Every quality lists its width, composition and finish, and the designs woven on it."

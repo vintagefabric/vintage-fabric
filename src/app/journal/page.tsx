@@ -31,7 +31,7 @@ export default async function JournalPage() {
       </div>
       <Section className="!pt-8">
         <div className="container-vf">
-          <SectionHeading
+          <SectionHeading as="h1"
             eyebrow="Notes & guides"
             title="Journal"
             intro="Short reads on caring for fabrics, what's selling, and sourcing from India."
