@@ -1,12 +1,28 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getCollections, getDesigns, getFeaturedDesigns, getQualities } from "@/lib/data";
 import { BRAND } from "@/lib/brand";
+import { buildMetadata, SITE_NAME } from "@/lib/site";
 import { LogoMark } from "@/components/Logo";
 import { DesignGrid } from "@/components/DesignCard";
 import { DesignMarquee } from "@/components/DesignMarquee";
 import { ArrowLink, Section, SectionHeading } from "@/components/ui";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+
+export const metadata: Metadata = buildMetadata({
+  title: SITE_NAME,
+  description:
+    "Vintage Fabric, Mfg. of Quality Fabrics. Premium printed and foil fabrics for kurti, dress, co-ord and 3-piece sets. Made in India, shipped worldwide.",
+  path: "/",
+  keywords: [
+    "fabric manufacturer Ahmedabad",
+    "kurti fabric wholesale",
+    "co-ord set fabric",
+    "printed cotton fabric India",
+    "fabric exporter India",
+  ],
+});
 
 export default async function HomePage() {
   const [qualities, collections, featured, allDesigns] = await Promise.all([
