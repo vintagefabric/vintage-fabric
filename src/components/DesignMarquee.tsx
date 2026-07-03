@@ -9,18 +9,26 @@ import type { Design } from "@/lib/types";
  */
 export function DesignMarquee({ designs }: { designs: Design[] }) {
   if (designs.length === 0) return null;
+  // Cap the ribbon so the page stays light however large the catalogue grows.
+  const shown = designs.slice(0, 16);
   // Two copies for a seamless loop.
-  const items = [...designs, ...designs];
+  const items = [...shown, ...shown];
+  // Scale duration with tile count so the glide speed stays constant
+  // (~45px/s) no matter how many designs are in the ribbon.
+  const duration = `${Math.max(45, shown.length * 5.5)}s`;
 
   return (
     <div className="marquee group relative overflow-hidden">
-      <div className="marquee-track gap-5 py-1">
+      <div
+        className="marquee-track gap-5 py-1"
+        style={{ "--marquee-duration": duration } as React.CSSProperties}
+      >
         {items.map((d, i) => (
           <Link
             key={`${d.id}-${i}`}
             href={`/design/${d.slug}`}
-            aria-hidden={i >= designs.length}
-            tabIndex={i >= designs.length ? -1 : 0}
+            aria-hidden={i >= shown.length}
+            tabIndex={i >= shown.length ? -1 : 0}
             className="group/card relative block w-[200px] shrink-0 overflow-hidden rounded-xl
                        border border-gold/40 bg-wine shadow-card transition-colors hover:border-gold/70 sm:w-[230px]"
           >

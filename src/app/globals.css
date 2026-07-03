@@ -252,7 +252,9 @@
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: vf-marquee 45s linear infinite;
+  /* Duration is set per-instance so glide speed stays constant however many
+     tiles the ribbon holds (see DesignMarquee.tsx). */
+  animation: vf-marquee var(--marquee-duration, 45s) linear infinite;
 }
 
 .marquee:hover .marquee-track {
