@@ -66,6 +66,48 @@
 }
 
 @layer utilities {
+  /*
+   * Hero entrance: a one-time staggered fade-and-rise when the page loads.
+   * Pure CSS so it plays immediately with the first paint (no JS wait).
+   */
+  .hero-enter {
+    animation: vf-enter 0.55s ease both;
+  }
+  .hero-enter-1 {
+    animation-delay: 0.1s;
+  }
+  .hero-enter-2 {
+    animation-delay: 0.2s;
+  }
+  .hero-enter-3 {
+    animation-delay: 0.3s;
+  }
+  .hero-enter-4 {
+    animation-delay: 0.4s;
+  }
+
+  /*
+   * Foil shimmer: a soft glint sweeps across the gold rule every few seconds,
+   * like light catching a foil print. Pure CSS, runs on the compositor.
+   */
+  .foil-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .foil-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      transparent 25%,
+      rgba(255, 246, 224, 0.95) 50%,
+      transparent 75%
+    );
+    transform: translateX(-160%);
+    animation: vf-shimmer 6.5s ease-in-out infinite;
+  }
+
   /* Scroll-reveal: sections gently fade and rise into view (see Reveal.tsx). */
   .reveal {
     opacity: 0;
@@ -217,11 +259,37 @@
   animation-play-state: paused;
 }
 
+@keyframes vf-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes vf-shimmer {
+  0%,
+  55% {
+    transform: translateX(-160%);
+  }
+  75%,
+  100% {
+    transform: translateX(160%);
+  }
+}
+
 /* Respect users who prefer reduced motion. */
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
   .animate-halo,
-  .marquee-track {
+  .marquee-track,
+  .hero-enter {
     animation: none;
+  }
+  .foil-shimmer::after {
+    display: none;
   }
 }

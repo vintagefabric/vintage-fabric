@@ -47,24 +47,26 @@ export default async function HomePage() {
 
         <div className="container-vf relative grid items-center gap-12 py-16 sm:py-24 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-gold/50 bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-gold-dark">
-              {BRAND.tagline}
-            </span>
-            <div className="mt-5 w-fit">
+            <div className="hero-enter">
+              <span className="inline-flex items-center gap-2 rounded-full border border-gold/50 bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-gold-dark">
+                {BRAND.tagline}
+              </span>
+            </div>
+            <div className="hero-enter hero-enter-1 mt-5 w-fit">
               <h1 className="text-[2.35rem] leading-[1.08] text-wine sm:text-6xl sm:leading-[1.04]">
                 Quality Fabrics,{" "}
                 <br />
                 crafted to be worn…
               </h1>
-              <div className="mt-6 h-1 w-full rounded-full bg-gold" />
+              <div className="foil-shimmer mt-6 h-1 w-full rounded-full bg-gold" />
             </div>
-            <p className="mt-6 max-w-md text-lg text-ink-soft">
+            <p className="hero-enter hero-enter-2 mt-6 max-w-md text-lg text-ink-soft">
               Premium printed and foil fabrics for kurti, dress,{" "}
               <span className="whitespace-nowrap">co-ord</span> and{" "}
               <span className="whitespace-nowrap">3-piece</span> sets. Made in
               India, shipped to buyers worldwide.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="hero-enter hero-enter-3 mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link href="/collections" className="btn-primary w-full sm:w-auto">
                 Explore collections
               </Link>
@@ -72,13 +74,13 @@ export default async function HomePage() {
                 Request a catalogue
               </Link>
             </div>
-            <p className="mt-6 text-sm text-ink-soft">
+            <p className="hero-enter hero-enter-4 mt-6 text-sm text-ink-soft">
               Wholesale and export inquiries welcome.
             </p>
           </div>
 
           {/* Logo medallion sitting directly on the background, with a soft gold halo */}
-          <div className="relative mt-4 flex justify-center lg:mt-0 lg:justify-end">
+          <div className="hero-enter hero-enter-2 relative mt-4 flex justify-center lg:mt-0 lg:justify-end">
             <div
               className="gold-halo animate-halo pointer-events-none absolute inset-0 m-auto h-[15rem] w-[15rem] sm:h-[20rem] sm:w-[20rem] lg:h-[26rem] lg:w-[26rem]"
               aria-hidden="true"
