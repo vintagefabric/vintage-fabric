@@ -30,7 +30,7 @@ export default async function FabricsPage() {
             title="Our Fabrics"
             intro="Source by fabric type. Every quality lists its width, composition and finish, and the designs woven on it."
           />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
             {qualities.map((q) => {
               const count = countFor(q.id);
               return (
@@ -44,13 +44,13 @@ export default async function FabricsPage() {
                       src={q.heroImage}
                       alt={`${q.name} fabric by Vintage Fabric`}
                       fill
-                      sizes="(max-width: 640px) 100vw, 25vw"
+                      sizes="(max-width: 640px) 50vw, 25vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-wine/90 via-wine/20 to-transparent" />
                   </div>
-                  <div className="absolute bottom-0 left-0 p-5">
-                    <h2 className="text-xl text-ivory">{q.name}</h2>
+                  <div className="absolute bottom-0 left-0 p-3 sm:p-5">
+                    <h2 className="text-base leading-snug text-ivory sm:text-xl">{q.name}</h2>
                     <p className="mt-1 text-xs text-gold">
                       {q.width} · {q.foil ? "Foil" : "Non-foil"}
                     </p>

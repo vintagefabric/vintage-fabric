@@ -7,6 +7,7 @@ import { buildMetadata, SITE_NAME } from "@/lib/site";
 import { LogoMark } from "@/components/Logo";
 import { DesignGrid } from "@/components/DesignCard";
 import { DesignMarquee } from "@/components/DesignMarquee";
+import { Reveal } from "@/components/Reveal";
 import { ArrowLink, Section, SectionHeading } from "@/components/ui";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 
@@ -50,7 +51,7 @@ export default async function HomePage() {
               {BRAND.tagline}
             </span>
             <div className="mt-5 w-fit">
-              <h1 className="text-5xl leading-[1.04] text-wine sm:text-6xl">
+              <h1 className="text-[2.35rem] leading-[1.08] text-wine sm:text-6xl sm:leading-[1.04]">
                 Quality Fabrics,{" "}
                 <br />
                 crafted to be worn…
@@ -63,11 +64,11 @@ export default async function HomePage() {
               <span className="whitespace-nowrap">3-piece</span> sets. Made in
               India, shipped to buyers worldwide.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/collections" className="btn-primary">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link href="/collections" className="btn-primary w-full sm:w-auto">
                 Explore collections
               </Link>
-              <Link href="/inquiry" className="btn-gold">
+              <Link href="/inquiry" className="btn-gold w-full sm:w-auto">
                 Request a catalogue
               </Link>
             </div>
@@ -95,7 +96,7 @@ export default async function HomePage() {
 
       {/* ── Our fabrics (by fabric type) ─────────────────────── */}
       <Section>
-        <div className="container-vf">
+        <Reveal className="container-vf">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
             <SectionHeading
               eyebrow="What we make"
@@ -104,7 +105,7 @@ export default async function HomePage() {
             />
             <ArrowLink href="/fabrics">All fabrics</ArrowLink>
           </div>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
             {qualities.map((q) => (
               <Link
                 key={q.id}
@@ -116,34 +117,34 @@ export default async function HomePage() {
                     src={q.heroImage}
                     alt={`${q.name} fabric by Vintage Fabric`}
                     fill
-                    sizes="(max-width: 640px) 100vw, 25vw"
+                    sizes="(max-width: 640px) 50vw, 25vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-wine/90 via-wine/20 to-transparent" />
                 </div>
-                <div className="absolute bottom-0 left-0 p-5">
-                  <h3 className="text-xl text-ivory">{q.name}</h3>
-                  <span className="text-sm text-gold">{q.width} · View designs →</span>
+                <div className="absolute bottom-0 left-0 p-3 sm:p-5">
+                  <h3 className="text-base leading-snug text-ivory sm:text-xl">{q.name}</h3>
+                  <span className="text-xs text-gold sm:text-sm">{q.width} · View designs →</span>
                 </div>
               </Link>
             ))}
           </div>
-        </div>
+        </Reveal>
       </Section>
 
       {/* ── Flowing design ribbon ────────────────────────────── */}
       <section className="overflow-hidden bg-cream py-10">
-        <div className="container-vf mb-7 text-center">
+        <Reveal className="container-vf mb-7 text-center">
           <p className="eyebrow">The collection</p>
           <h2 className="mt-2 text-3xl sm:text-4xl">Designs in motion</h2>
           <div className="rule-gold mx-auto mt-4" />
-        </div>
+        </Reveal>
         <DesignMarquee designs={allDesigns} />
       </section>
 
       {/* ── Latest series ────────────────────────────────────── */}
       <Section>
-        <div className="container-vf">
+        <Reveal className="container-vf">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
             <SectionHeading eyebrow="Design series" title="Latest collections" />
             <ArrowLink href="/collections">All collections</ArrowLink>
@@ -171,12 +172,12 @@ export default async function HomePage() {
               </Link>
             ))}
           </div>
-        </div>
+        </Reveal>
       </Section>
 
       {/* ── Featured designs ─────────────────────────────────── */}
       <Section>
-        <div className="container-vf">
+        <Reveal className="container-vf">
           <SectionHeading
             eyebrow="From the catalogue"
             title="Featured designs"
@@ -185,12 +186,12 @@ export default async function HomePage() {
           <div className="mt-10">
             <DesignGrid designs={featured} />
           </div>
-        </div>
+        </Reveal>
       </Section>
 
       {/* ── Export / trust band ──────────────────────────────── */}
       <section className="bg-wine text-ivory">
-        <div className="container-vf grid gap-8 py-14 text-center sm:grid-cols-3">
+        <Reveal className="container-vf grid gap-8 py-14 text-center sm:grid-cols-3">
           {[
             { k: "Made in India", v: "Crafted with care and supplied to buyers across India and abroad." },
             { k: "Export ready", v: "Consistent widths (56\"/58\"), 100% cotton bases and dependable finishes." },
@@ -201,12 +202,12 @@ export default async function HomePage() {
               <p className="mx-auto mt-2 max-w-xs text-sm text-ivory/85">{item.v}</p>
             </div>
           ))}
-        </div>
+        </Reveal>
       </section>
 
       {/* ── Conversion CTA ───────────────────────────────────── */}
       <Section>
-        <div className="container-vf">
+        <Reveal className="container-vf">
           <div className="rounded-2xl border border-gold/25 bg-white p-10 text-center shadow-card">
             <SectionHeading
               center
@@ -224,7 +225,7 @@ export default async function HomePage() {
               <WhatsAppButton />
             </div>
           </div>
-        </div>
+        </Reveal>
       </Section>
     </>
   );

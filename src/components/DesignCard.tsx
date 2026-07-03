@@ -37,10 +37,10 @@ export async function DesignCard({ design }: { design: Design }) {
         <h3 className="font-display text-lg leading-snug text-ivory group-hover:text-gold">
           {design.title}
         </h3>
-        <p className="text-xs text-ivory/70">{design.designNo}</p>
+        <p className="font-display text-sm italic text-ivory/75">{design.designNo}</p>
         {quality && (
           <div className="mt-auto pt-2">
-            <span className="inline-flex items-center rounded-full border border-gold/40 bg-wine-dark px-3 py-1 text-xs font-medium text-gold">
+            <span className="inline-flex items-center rounded-full border border-gold/40 bg-wine-dark px-3 py-1 font-display text-sm font-semibold text-gold">
               {quality.fabricType} · {quality.width}
             </span>
           </div>

@@ -66,6 +66,26 @@
 }
 
 @layer utilities {
+  /* Scroll-reveal: sections gently fade and rise into view (see Reveal.tsx). */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.65s ease,
+      transform 0.65s ease;
+  }
+  .reveal-shown {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
   /* Hide the scrollbar on horizontally-scrollable rows (e.g. admin nav). */
   .no-scrollbar {
     -ms-overflow-style: none;

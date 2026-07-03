@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LogoLockup } from "./Logo";
 import { WhatsAppButton } from "./WhatsAppButton";
 
@@ -16,9 +16,23 @@ const NAV = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // A brighter gold keyline appears under the bar once the page scrolls,
+  // so the sticky header reads as a deliberate edge over the content.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-gold/30 bg-wine text-ivory">
+    <header
+      className={`sticky top-0 z-40 bg-wine text-ivory transition-shadow duration-300 ${
+        scrolled ? "shadow-[0_10px_28px_-14px_rgba(44,42,44,0.45)]" : ""
+      }`}
+    >
       <div className="container-vf flex h-20 items-center justify-between">
         <Link href="/" aria-label="Vintage Fabric home" onClick={() => setOpen(false)}>
           <LogoLockup light />
@@ -87,6 +101,16 @@ export function Header() {
           </div>
         </nav>
       )}
+
+      {/* Gold keyline: quiet at the top of the page, brightens on scroll. */}
+      <div
+        aria-hidden="true"
+        className={`h-px w-full transition-opacity duration-300 ${
+          scrolled
+            ? "bg-gradient-to-r from-gold/20 via-gold to-gold/20 opacity-100"
+            : "bg-gold/30 opacity-70"
+        }`}
+      />
     </header>
   );
 }

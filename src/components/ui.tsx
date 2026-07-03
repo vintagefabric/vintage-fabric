@@ -56,7 +56,7 @@ export function ArrowLink({ href, children }: { href: string; children: ReactNod
 /** Pill / chip label. */
 export function Pill({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-gold/50 bg-gold/10 px-3 py-1 text-xs font-medium text-wine">
+    <span className="inline-flex items-center rounded-full border border-gold/50 bg-gold/10 px-3 py-1 font-display text-sm font-semibold text-wine">
       {children}
     </span>
   );
