@@ -164,8 +164,22 @@ export async function getQualitiesByCategory(categoryId: string): Promise<Qualit
 }
 
 // ── Collections / series ───────────────────────────────────────────────────
+/**
+ * Display order for the series. The founding four keep their catalogue order
+ * with SUNSHINE last; anything the admin adds later lands after them.
+ */
+const SERIES_RANK: Record<string, number> = {
+  universe: 1,
+  soulitaire: 2,
+  indriya: 3,
+  sunshine: 99,
+};
+const seriesRank = (c: Collection) => SERIES_RANK[c.slug] ?? 50;
+
 export async function getCollections(): Promise<Collection[]> {
-  return (await allCollections()).filter((c) => c.status === "published");
+  return (await allCollections())
+    .filter((c) => c.status === "published")
+    .sort((a, b) => seriesRank(a) - seriesRank(b) || a.title.localeCompare(b.title));
 }
 /** All collections incl. drafts — for the admin manager only. */
 export async function getAllCollections(): Promise<Collection[]> {

@@ -32,7 +32,7 @@ export function DesignMarquee({ designs }: { designs: Design[] }) {
             className="group/card relative block w-[200px] shrink-0 overflow-hidden rounded-xl
                        border border-gold/40 bg-wine shadow-card transition-colors hover:border-gold/70 sm:w-[230px]"
           >
-            <div className="relative aspect-[3/4] overflow-hidden bg-wine-dark">
+            <div className="relative aspect-[9/14] overflow-hidden bg-white">
               <Image
                 src={d.images.front.url}
                 alt={d.images.front.alt}

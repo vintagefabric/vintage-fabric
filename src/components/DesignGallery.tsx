@@ -25,7 +25,8 @@ export function DesignGallery({ images }: { images: DesignImages }) {
 
   return (
     <div>
-      <div className="relative aspect-[3/4] overflow-hidden rounded-xl border border-line bg-cream-dark shadow-card">
+      {/* 9:14 matches the catalogue photography, so the full plate shows. */}
+      <div className="relative aspect-[9/14] overflow-hidden rounded-xl border border-line bg-white shadow-card">
         <Image
           src={current.img.url}
           alt={current.img.alt}

@@ -14,7 +14,8 @@ export async function DesignCard({ design }: { design: Design }) {
       className="group flex flex-col overflow-hidden rounded-xl border border-gold/40 bg-wine text-ivory shadow-card
                  transition-all duration-300 hover:-translate-y-1 hover:border-gold/70 hover:shadow-card-hover"
     >
-      <div className="relative aspect-[3/4] overflow-hidden bg-wine-dark">
+      {/* 9:14 matches the catalogue photography, so nothing gets cropped. */}
+      <div className="relative aspect-[9/14] overflow-hidden bg-white">
         <Image
           src={design.images.front.url}
           alt={design.images.front.alt}
