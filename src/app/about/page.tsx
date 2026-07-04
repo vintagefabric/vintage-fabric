@@ -28,7 +28,7 @@ export default function AboutPage() {
             <SectionHeading as="h1" eyebrow="Our story" title="Mfg. of Quality Fabrics" />
             <div className="mt-6 space-y-4 text-ink-soft">
               <p>
-                Vintage Fabric works out of New Cloth Market in Raipur, Ahmedabad,
+                Vintage Fabric works out of New Cloth Market in Ahmedabad,
                 one of the busiest cloth markets in the country. It is a fast,
                 crowded place where buyers still judge a fabric by touch, and a roll
                 either earns a reorder or it does not. That is the bar we make to,

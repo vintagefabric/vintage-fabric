@@ -18,10 +18,10 @@ export const BRAND = {
   gstin: "24DFNPS5386J1ZN",
   address: {
     line1: "146, 1st Floor, New Cloth Market",
-    line2: "Raipur, Ahmedabad-380002",
+    line2: "Ahmedabad-380002",
     region: "Gujarat",
     country: "INDIA",
-    full: "146, 1st Floor, New Cloth Market, Raipur, Ahmedabad-380002, Gujarat, INDIA",
+    full: "146, 1st Floor, New Cloth Market, Ahmedabad-380002, Gujarat, INDIA",
   },
 } as const;
 

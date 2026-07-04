@@ -108,7 +108,7 @@ export const qualities: Quality[] = [
   },
   {
     id: "q-vertical-discharge",
-    name: "Vertical Discharge 56\"",
+    name: "Vertican Discharge 56\"",
     code: "vertical-discharge-56",
     slug: "vertical-discharge-56",
     fabricType: "Discharge Print",
@@ -116,12 +116,12 @@ export const qualities: Quality[] = [
     composition: "100% Cotton",
     foil: true,
     categoryId: "cat-coord",
-    heroImage: ph("vf-q-discharge", "Vertical discharge print fabric close-up").url,
+    heroImage: ph("vf-q-discharge", "Vertican discharge print fabric close-up").url,
     seo: {
-      title: "Vertical Discharge 56\" Foil | Vintage Fabric",
+      title: "Vertican Discharge 56\" Foil | Vintage Fabric",
       description:
-        "Vertical discharge print, 56\" width, foil finish, used in the SOULITAIRE co-ord series.",
-      keywords: ["discharge print fabric", "vertical discharge", "foil fabric 56 inch"],
+        "Vertican discharge print, 56\" width, foil finish, used in the SOULITAIRE co-ord series.",
+      keywords: ["discharge print fabric", "vertican discharge", "foil fabric 56 inch"],
     },
   },
   {
@@ -188,11 +188,11 @@ export const collections: Collection[] = [
     status: "published",
     heroImage: ph("vf-soulitaire", "SOULITAIRE series fabric collection").url,
     description:
-      "Foil vertical-discharge co-ords with a jewel-like finish, premium designs for the discerning buyer.",
+      "Foil vertican-discharge co-ords with a jewel-like finish, premium designs for the discerning buyer.",
     seo: {
       title: "SOULITAIRE Series | Vintage Fabric",
       description:
-        "The SOULITAIRE series: foil vertical-discharge co-ord set fabrics by Vintage Fabric.",
+        "The SOULITAIRE series: foil vertican-discharge co-ord set fabrics by Vintage Fabric.",
       keywords: ["SOULITAIRE series", "foil co-ord fabric", "discharge co-ord set"],
     },
   },
@@ -283,7 +283,7 @@ export const designs: Design[] = [
     collectionId: "col-soulitaire",
     status: "published",
     description:
-      "A foil vertical-discharge co-ord set on 56\" cotton, part of the premium SOULITAIRE series.",
+      "A foil vertican-discharge co-ord set on 56\" cotton, part of the premium SOULITAIRE series.",
     images: {
       front: ph("vf-d-5025-f", "SOULITAIRE foil co-ord D.No. 5025, front view"),
       neck: ph("vf-d-5025-n", "SOULITAIRE foil co-ord D.No. 5025, neck detail"),
@@ -303,7 +303,7 @@ export const designs: Design[] = [
     collectionId: "col-soulitaire",
     status: "published",
     description:
-      "A second foil vertical-discharge co-ord (D.No. 5027) on 56\" cotton from the SOULITAIRE series.",
+      "A second foil vertican-discharge co-ord (D.No. 5027) on 56\" cotton from the SOULITAIRE series.",
     images: {
       front: ph("vf-d-5027-f", "SOULITAIRE foil co-ord D.No. 5027, front view"),
       neck: ph("vf-d-5027-n", "SOULITAIRE foil co-ord D.No. 5027, neck detail"),

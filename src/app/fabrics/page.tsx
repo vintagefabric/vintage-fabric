@@ -9,7 +9,7 @@ import { Section, SectionHeading } from "@/components/ui";
 export const metadata: Metadata = buildMetadata({
   title: "Our Fabrics",
   description:
-    "Browse Vintage Fabric by fabric type: cambric Procion, vertical discharge, dhabhu plain and cotton floral. Premium printed and foil fabrics for wholesale and export.",
+    "Browse Vintage Fabric by fabric type: cambric Procion, Vertican discharge, dhabhu plain and cotton floral. Premium printed and foil fabrics for wholesale and export.",
   path: "/fabrics",
   keywords: ["cambric fabric", "discharge print fabric", "dhabhu plain", "cotton print fabric", "fabric types"],
 });
