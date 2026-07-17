@@ -62,7 +62,6 @@ const DOCS: Record<string, LegalDoc> = {
         p: "To run the site and respond to you, we rely on a few trusted providers who process data on our behalf:",
         list: [
           "Supabase, the secure database that stores your inquiry",
-          "Resend, which delivers your inquiry to us by email",
           "Cloudinary, which hosts our images",
           "Vercel, which hosts the website",
           "If you message us on WhatsApp, that chat is also covered by WhatsApp's own privacy terms",
