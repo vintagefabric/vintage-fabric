@@ -11,6 +11,10 @@ import { Reveal } from "@/components/Reveal";
 import { ArrowLink, Section, SectionHeading } from "@/components/ui";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 
+// Render from live Supabase data at request time, never frozen at build
+// (so real images and admin edits always show; seed is only an offline fallback).
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = buildMetadata({
   title: SITE_NAME,
   description:

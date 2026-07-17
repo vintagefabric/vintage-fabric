@@ -7,6 +7,10 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Section, SectionHeading } from "@/components/ui";
 import { BRAND, PHONES } from "@/lib/brand";
 
+// Render from live Supabase data at request time, never frozen at build
+// (so real images and admin edits always show; seed is only an offline fallback).
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = buildMetadata({
   title: "Buyer Inquiry",
   description:

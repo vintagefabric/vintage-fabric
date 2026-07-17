@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import {
   getDesignBySlug,
   getDesignContext,
-  getDesigns,
   getDesignsByCollection,
 } from "@/lib/data";
 import { buildMetadata } from "@/lib/site";
@@ -17,10 +16,9 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 type Params = { slug: string };
 
-/** Pre-render every design page (static / ISR per plan §3). */
-export async function generateStaticParams() {
-  return (await getDesigns()).map((d) => ({ slug: d.slug }));
-}
+// Render from live Supabase data at request time, never frozen at build
+// (so real images and admin edits always show; seed is only an offline fallback).
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

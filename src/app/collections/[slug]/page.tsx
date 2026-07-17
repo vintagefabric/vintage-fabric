@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getCollectionBySlug, getCollections, getDesignsByCollection } from "@/lib/data";
+import { getCollectionBySlug, getDesignsByCollection } from "@/lib/data";
 import { buildMetadata } from "@/lib/site";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { DesignGrid } from "@/components/DesignCard";
@@ -10,9 +10,9 @@ import { Section } from "@/components/ui";
 
 type Params = { slug: string };
 
-export async function generateStaticParams() {
-  return (await getCollections()).map((c) => ({ slug: c.slug }));
-}
+// Render from live Supabase data at request time, never frozen at build
+// (so real images and admin edits always show; seed is only an offline fallback).
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import {
   getCollectionById,
   getDesignsByQuality,
-  getQualities,
   getQualityByCode,
 } from "@/lib/data";
 import { buildMetadata } from "@/lib/site";
@@ -14,9 +13,9 @@ import { Pill, Section, SectionHeading } from "@/components/ui";
 
 type Params = { code: string };
 
-export async function generateStaticParams() {
-  return (await getQualities()).map((q) => ({ code: q.code }));
-}
+// Render from live Supabase data at request time, never frozen at build
+// (so real images and admin edits always show; seed is only an offline fallback).
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

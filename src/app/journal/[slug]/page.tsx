@@ -9,6 +9,10 @@ import { Pill, Section } from "@/components/ui";
 
 type Params = { slug: string };
 
+// Render from live Supabase data at request time, never frozen at build
+// (so real images and admin edits always show; seed is only an offline fallback).
+export const dynamic = "force-dynamic";
+
 export async function generateStaticParams() {
   return (await getJournalPosts()).map((p) => ({ slug: p.slug }));
 }
