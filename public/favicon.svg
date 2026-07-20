@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <circle cx="100" cy="100" r="98" fill="#702040"/>
-  <circle cx="100" cy="100" r="90" fill="none" stroke="#D09030" stroke-width="3"/>
-  <circle cx="100" cy="100" r="82" fill="none" stroke="#D09030" stroke-width="2" stroke-dasharray="2 5"/>
-  <text x="100" y="132" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-weight="700" font-size="110" fill="#D09030">V</text>
-</svg>
