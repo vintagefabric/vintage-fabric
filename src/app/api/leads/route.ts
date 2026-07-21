@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { leadHtml, leadSubject, leadText } from "@/lib/lead-email";
 import { leadSchema } from "@/lib/leads";
 import { getSupabaseAdmin } from "@/lib/supabase";
 import { BRAND, WHATSAPP } from "@/lib/brand";
@@ -65,35 +66,46 @@ export async function POST(req: Request) {
     console.log("[leads] (no Supabase configured) lead received:", lead);
   }
 
-  // 2) Notify by email (if Resend configured).
+  // 2) Notify by email (if Resend is configured).
+  //    Best-effort on purpose: the lead is already saved above, so a mail
+  //    outage must never cost us the inquiry or fail the visitor's request.
   if (process.env.RESEND_API_KEY) {
     try {
       const resend = new Resend(process.env.RESEND_API_KEY);
       const to = process.env.LEADS_TO_EMAIL || BRAND.email;
-      const from = process.env.LEADS_FROM_EMAIL || "inquiries@vintagefabric.in";
-      await resend.emails.send({
+      // onboarding@resend.dev works without domain verification; switch to
+      // inquiries@vintagefabric.in once the domain is verified in Resend.
+      const from = process.env.LEADS_FROM_EMAIL || "onboarding@resend.dev";
+      const payload = {
+        type: data.type,
+        name: data.name,
+        company: data.company,
+        country: data.country,
+        email: data.email,
+        phone: data.phone,
+        message: data.message,
+        interest: data.interest,
+        ref: data.ref,
+      };
+
+      const { error } = await resend.emails.send({
         from: `Vintage Fabric <${from}>`,
         to,
         replyTo: data.email,
-        subject: `New ${data.type}, ${data.name}${data.company ? ` (${data.company})` : ""}`,
-        text: [
-          `Type: ${data.type}`,
-          `Name: ${data.name}`,
-          `Company: ${data.company || "-"}`,
-          `Country: ${data.country || "-"}`,
-          `Email: ${data.email}`,
-          `Phone: ${data.phone || "-"}`,
-          `Interest: ${data.interest || "-"}`,
-          `Reference: ${data.ref || "-"}`,
-          "",
-          "Message:",
-          data.message || "-",
-        ].join("\n"),
+        subject: leadSubject(payload),
+        text: leadText(payload),
+        html: leadHtml(payload),
       });
+
+      // Resend reports delivery problems in the response, not by throwing.
+      if (error) {
+        console.error("[leads] Resend rejected the notification:", error);
+      }
     } catch (err) {
-      // Email is best-effort, the lead is already saved.
-      console.error("[leads] Resend email failed:", err);
+      console.error("[leads] Notification email failed to send:", err);
     }
+  } else {
+    console.warn("[leads] RESEND_API_KEY not set, skipping notification email.");
   }
 
   // 3) Build a prefilled WhatsApp deep link to the Accounts (office) number.
