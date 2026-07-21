@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getJournalPostBySlug, getJournalPosts } from "@/lib/data";
+import { getJournalPostBySlug } from "@/lib/data";
 import { abs, buildMetadata } from "@/lib/site";
 import { BRAND } from "@/lib/brand";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -12,10 +12,6 @@ type Params = { slug: string };
 // Render from live Supabase data at request time, never frozen at build
 // (so real images and admin edits always show; seed is only an offline fallback).
 export const dynamic = "force-dynamic";
-
-export async function generateStaticParams() {
-  return (await getJournalPosts()).map((p) => ({ slug: p.slug }));
-}
 
 export async function generateMetadata({
   params,
