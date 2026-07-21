@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { leadHtml, leadSubject, leadText } from "@/lib/lead-email";
 import { leadSchema } from "@/lib/leads";
+
+/** Resend's shared sender, usable without any domain verification. */
+const FALLBACK_FROM = "onboarding@resend.dev";
 import { getSupabaseAdmin } from "@/lib/supabase";
 import { BRAND, WHATSAPP } from "@/lib/brand";
 
@@ -73,9 +76,10 @@ export async function POST(req: Request) {
     try {
       const resend = new Resend(process.env.RESEND_API_KEY);
       const to = process.env.LEADS_TO_EMAIL || BRAND.email;
-      // onboarding@resend.dev works without domain verification; switch to
-      // inquiries@vintagefabric.in once the domain is verified in Resend.
-      const from = process.env.LEADS_FROM_EMAIL || "onboarding@resend.dev";
+      // A custom sender (inquiries@vintagefabric.in) needs its domain verified
+      // in Resend; FALLBACK_FROM always works, so it is both the default and
+      // the retry sender.
+      const from = process.env.LEADS_FROM_EMAIL || FALLBACK_FROM;
       const payload = {
         type: data.type,
         name: data.name,
@@ -88,18 +92,31 @@ export async function POST(req: Request) {
         ref: data.ref,
       };
 
-      const { error } = await resend.emails.send({
-        from: `Vintage Fabric <${from}>`,
-        to,
-        replyTo: data.email,
-        subject: leadSubject(payload),
-        text: leadText(payload),
-        html: leadHtml(payload),
-      });
+      const send = (sender: string) =>
+        resend.emails.send({
+          from: `Vintage Fabric <${sender}>`,
+          to,
+          replyTo: data.email,
+          subject: leadSubject(payload),
+          text: leadText(payload),
+          html: leadHtml(payload),
+        });
 
       // Resend reports delivery problems in the response, not by throwing.
+      const { error } = await send(from);
+
       if (error) {
         console.error("[leads] Resend rejected the notification:", error);
+        // A custom sender only works once its domain is verified in Resend.
+        // Fall back to the always-available sender so an inquiry is never
+        // missed while DNS is still propagating.
+        if (from !== FALLBACK_FROM) {
+          console.warn(`[leads] Retrying notification from ${FALLBACK_FROM}.`);
+          const retry = await send(FALLBACK_FROM);
+          if (retry.error) {
+            console.error("[leads] Fallback notification also failed:", retry.error);
+          }
+        }
       }
     } catch (err) {
       console.error("[leads] Notification email failed to send:", err);
