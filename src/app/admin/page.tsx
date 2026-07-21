@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { AdminLogin } from "@/components/AdminLogin";
 import { AdminNav } from "@/components/AdminNav";
+import { AdminQuickActions, AdminStats } from "@/components/AdminStats";
 import { LeadsTable } from "@/components/LeadsTable";
+import { getCollections, getDesigns, getJournalPosts, getQualities } from "@/lib/data";
 import { getSupabaseAdmin, isSupabaseAdminConfigured } from "@/lib/supabase";
 import type { Lead } from "@/lib/types";
 
@@ -54,12 +56,47 @@ export default async function AdminPage() {
     );
   }
 
-  const leads = await loadLeads();
+  const [leads, designs, series, fabrics, journal] = await Promise.all([
+    loadLeads(),
+    getDesigns(),
+    getCollections(),
+    getQualities(),
+    getJournalPosts(),
+  ]);
+
+  const newLeads = leads.filter((l) => (l.status ?? "new") === "new").length;
 
   return (
     <div className="container-vf py-12">
       <AdminNav />
-      <LeadsTable leads={leads} configured={isSupabaseAdminConfigured} />
+
+      <div className="mb-8">
+        <h1 className="text-3xl sm:text-4xl">Dashboard</h1>
+        <div className="rule-gold mt-3" />
+        <p className="mt-4 text-sm text-ink-soft">
+          {newLeads > 0
+            ? `You have ${newLeads} new ${newLeads === 1 ? "inquiry" : "inquiries"} to reply to.`
+            : "No new inquiries right now. Everything is up to date."}
+        </p>
+      </div>
+
+      <AdminStats
+        stats={[
+          { label: "New inquiries", value: newLeads, href: "/admin", accent: true },
+          { label: "Designs", value: designs.length, href: "/admin/designs" },
+          { label: "Series", value: series.length, href: "/admin/series" },
+          { label: "Fabric types", value: fabrics.length, href: "/admin/fabrics" },
+          { label: "Journal posts", value: journal.length, href: "/admin/journal" },
+        ]}
+      />
+
+      <div className="mt-6">
+        <AdminQuickActions />
+      </div>
+
+      <div className="mt-12">
+        <LeadsTable leads={leads} configured={isSupabaseAdminConfigured} />
+      </div>
     </div>
   );
 }
