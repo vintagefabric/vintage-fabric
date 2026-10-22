@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getJournalPosts } from "@/lib/data";
 import { buildMetadata } from "@/lib/site";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { gridStagger } from "@/components/Reveal";
 import { Pill, Section, SectionHeading } from "@/components/ui";
 
 // Render from live Supabase data at request time, never frozen at build
@@ -41,23 +42,32 @@ export default async function JournalPage() {
             intro="Short reads on caring for fabrics, what's selling, and sourcing from India."
           />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post) => (
-              <Link
-                key={post.id}
-                href={`/journal/${post.slug}`}
-                className="group flex flex-col rounded-xl border border-line bg-white p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-card-hover"
-              >
-                <time className="text-xs uppercase tracking-wide text-ink-soft">
-                  {formatDate(post.publishedAt)}
-                </time>
-                <h2 className="mt-3 text-xl text-wine group-hover:text-gold-dark">{post.title}</h2>
-                <p className="mt-2 flex-1 text-sm text-ink-soft">{post.excerpt}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {post.tags.slice(0, 2).map((t) => (
-                    <Pill key={t}>{t}</Pill>
-                  ))}
-                </div>
-              </Link>
+            {posts.map((post, i) => (
+              <div key={post.id} data-reveal="" style={gridStagger(i, 3, 110)}>
+                <Link
+                  href={`/journal/${post.slug}`}
+                  className="group flex h-full flex-col rounded-xl border border-line bg-white p-6 shadow-card transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-gold/50 hover:shadow-card-hover"
+                >
+                  <time className="text-xs uppercase tracking-wide text-ink-soft">
+                    {formatDate(post.publishedAt)}
+                  </time>
+                  <h2 className="mt-3 text-xl text-wine transition-colors duration-300 group-hover:text-gold-dark">
+                    {post.title}
+                  </h2>
+                  <p className="mt-2 flex-1 text-sm text-ink-soft">{post.excerpt}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {post.tags.slice(0, 2).map((t) => (
+                      <Pill key={t}>{t}</Pill>
+                    ))}
+                  </div>
+                  <span className="mt-4 text-xs font-medium uppercase tracking-wide text-gold-dark">
+                    Read{" "}
+                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </span>
+                </Link>
+              </div>
             ))}
           </div>
         </div>

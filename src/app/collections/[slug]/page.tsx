@@ -52,18 +52,25 @@ export default async function CollectionPage({ params }: { params: Promise<Param
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-25"
+          className="animate-kenburns object-cover opacity-25"
         />
         <div className="container-vf relative py-20">
-          <Breadcrumbs
-            items={[
-              { name: "Collections", path: "/collections" },
-              { name: col.title, path: `/collections/${col.slug}` },
-            ]}
-          />
-          <p className="eyebrow mt-6 text-gold">Design series</p>
-          <h1 className="mt-2 text-5xl text-ivory">{col.title}</h1>
-          <p className="mt-4 max-w-xl text-ivory/85">{col.description}</p>
+          <div className="hero-enter">
+            <Breadcrumbs
+              light
+              items={[
+                { name: "Collections", path: "/collections" },
+                { name: col.title, path: `/collections/${col.slug}` },
+              ]}
+            />
+          </div>
+          <p className="hero-enter hero-enter-1 eyebrow mt-6 text-gold">Design series</p>
+          <h1 className="hero-enter hero-enter-2 mt-2 text-5xl text-ivory">{col.title}</h1>
+          <div className="hero-enter hero-enter-3 foil-shimmer mt-5 h-0.5 w-16 rounded-full bg-gold" />
+          <p className="hero-enter hero-enter-4 mt-5 max-w-xl text-ivory/85">{col.description}</p>
+          <p className="hero-enter hero-enter-4 mt-4 text-xs uppercase tracking-[0.2em] text-gold">
+            {designs.length} {designs.length === 1 ? "design" : "designs"}
+          </p>
         </div>
       </section>
 

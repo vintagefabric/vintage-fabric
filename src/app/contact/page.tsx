@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/site";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { revealDelay } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/ui";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { MailIcon, PhoneIcon, PinIcon } from "@/components/icons";
@@ -30,7 +31,7 @@ export default function ContactPage() {
             />
 
             <dl className="mt-8 space-y-6">
-              <div className="flex gap-4">
+              <div className="flex gap-4" data-reveal="" style={revealDelay(120)}>
                 <PinIcon className="mt-1 h-6 w-6 shrink-0 text-gold-dark" />
                 <div>
                   <dt className="font-medium text-ink">Address</dt>
@@ -42,7 +43,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex gap-4" data-reveal="" style={revealDelay(200)}>
                 <PhoneIcon className="mt-1 h-6 w-6 shrink-0 text-gold-dark" />
                 <div>
                   <dt className="font-medium text-ink">Phone</dt>
@@ -51,7 +52,7 @@ export default function ContactPage() {
                       <span className="text-ink-soft/70">Sales: </span>
                       {PHONES.sales.map((p, i) => (
                         <span key={p}>
-                          <a href={`tel:${p.replace(/[^+\d]/g, "")}`} className="hover:text-wine">
+                          <a href={`tel:${p.replace(/[^+\d]/g, "")}`} className="link-draw hover:text-wine">
                             {p}
                           </a>
                           {i < PHONES.sales.length - 1 ? " · " : ""}
@@ -62,7 +63,7 @@ export default function ContactPage() {
                       <span className="text-ink-soft/70">Accounts / Office: </span>
                       <a
                         href={`tel:${PHONES.accounts.replace(/[^+\d]/g, "")}`}
-                        className="hover:text-wine"
+                        className="link-draw hover:text-wine"
                       >
                         {PHONES.accounts}
                       </a>
@@ -71,12 +72,12 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex gap-4" data-reveal="" style={revealDelay(280)}>
                 <MailIcon className="mt-1 h-6 w-6 shrink-0 text-gold-dark" />
                 <div>
                   <dt className="font-medium text-ink">Email & web</dt>
                   <dd className="mt-1 text-ink-soft">
-                    <a href={`mailto:${BRAND.email}`} className="hover:text-wine">
+                    <a href={`mailto:${BRAND.email}`} className="link-draw hover:text-wine">
                       {BRAND.email}
                     </a>
                     <br />
@@ -86,7 +87,7 @@ export default function ContactPage() {
               </div>
             </dl>
 
-            <div className="mt-8">
+            <div className="mt-8" data-reveal="" style={revealDelay(360)}>
               <WhatsAppButton />
             </div>
 
@@ -94,7 +95,11 @@ export default function ContactPage() {
           </div>
 
           {/* Map */}
-          <div className="overflow-hidden rounded-xl border border-ink/10 shadow-card">
+          <div
+            className="overflow-hidden rounded-xl border border-ink/10 shadow-card"
+            data-reveal=""
+            style={revealDelay(200)}
+          >
             <iframe
               title="Vintage Fabric location, New Cloth Market, Ahmedabad"
               src="https://www.google.com/maps?q=Vintage+Fabric,+New+Cloth+Market,+146,+Ahmedabad,+Gujarat+380002&ftid=0x395e8517289c6e45:0x99be5a6dd45b4d07&output=embed"

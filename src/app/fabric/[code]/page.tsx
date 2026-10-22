@@ -9,6 +9,7 @@ import {
 import { buildMetadata } from "@/lib/site";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { DesignGrid } from "@/components/DesignCard";
+import { Reveal } from "@/components/Reveal";
 import { Pill, Section, SectionHeading } from "@/components/ui";
 
 type Params = { code: string };
@@ -69,26 +70,26 @@ export default async function FabricPage({ params }: { params: Promise<Params> }
           />
 
           {/* Spec chips */}
-          <div className="mt-6 flex flex-wrap gap-2">
+          <Reveal delay={120} className="mt-6 flex flex-wrap gap-2">
             <Pill>{quality.fabricType}</Pill>
             <Pill>{quality.width}</Pill>
             <Pill>{quality.composition}</Pill>
             <Pill>{quality.foil ? "Foil" : "Non-foil"}</Pill>
-          </div>
+          </Reveal>
 
           {series.length > 0 && (
-            <div className="mt-6 flex flex-wrap items-center gap-2 text-sm">
+            <Reveal delay={200} className="mt-6 flex flex-wrap items-center gap-2 text-sm">
               <span className="text-ink-soft">Used in:</span>
               {series.map((s) => (
                 <Link
                   key={s.id}
                   href={`/collections/${s.slug}`}
-                  className="rounded-full border border-gold/50 bg-gold/10 px-3 py-1 text-xs font-medium text-wine hover:bg-gold/20"
+                  className="rounded-full border border-gold/50 bg-gold/10 px-3 py-1 text-xs font-medium text-wine transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold/20"
                 >
                   {s.title}
                 </Link>
               ))}
-            </div>
+            </Reveal>
           )}
 
           <div className="mt-10">

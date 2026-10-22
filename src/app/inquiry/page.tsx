@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getDesignBySlug } from "@/lib/data";
 import { buildMetadata } from "@/lib/site";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Section, SectionHeading } from "@/components/ui";
@@ -45,7 +46,7 @@ export default async function InquiryPage({
                 Inquiring about <strong>{referenced.title}</strong> ({referenced.designNo}).
               </p>
             )}
-            <div className="mt-8 space-y-4 text-sm text-ink-soft">
+            <Reveal delay={140} className="mt-8 space-y-4 text-sm text-ink-soft">
               <p className="font-medium text-ink">Other ways to reach us</p>
               <ul className="space-y-1">
                 <li>Sales: {PHONES.sales.join(" · ")}</li>
@@ -53,10 +54,12 @@ export default async function InquiryPage({
                 <li>Email: {BRAND.email}</li>
               </ul>
               <WhatsAppButton />
-            </div>
+            </Reveal>
           </div>
 
-          <LeadForm type="inquiry" refSlug={referenced?.slug} />
+          <Reveal delay={180}>
+            <LeadForm type="inquiry" refSlug={referenced?.slug} />
+          </Reveal>
         </div>
       </Section>
     </>

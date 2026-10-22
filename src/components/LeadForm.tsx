@@ -7,8 +7,10 @@ import { WhatsAppIcon } from "./icons";
 type LeadType = "inquiry" | "catalog";
 
 const inputClass =
-  "mt-1 w-full rounded-lg border border-ink/20 bg-white px-3 py-2.5 text-ink " +
-  "shadow-sm focus:border-wine focus:outline-none focus:ring-1 focus:ring-wine";
+  "mt-1 w-full rounded-lg border border-ink/20 bg-white px-3 py-2.5 text-ink shadow-sm " +
+  "transition-all duration-300 ease-out hover:border-ink/35 " +
+  "focus:border-wine focus:outline-none focus:ring-1 focus:ring-wine " +
+  "focus:shadow-[0_0_0_5px_rgba(208,144,48,0.14)]";
 
 /**
  * Shared lead form for both the inquiry page and the catalog-download page.
@@ -60,7 +62,7 @@ export function LeadForm({
 
   if (status === "done") {
     return (
-      <div className="rounded-2xl border border-gold/40 bg-white p-8 text-center shadow-card">
+      <div className="animate-pop-in rounded-2xl border border-gold/40 bg-white p-8 text-center shadow-card">
         <h2 className="text-3xl">Thank you!</h2>
         <div className="rule-gold mx-auto mt-4" />
         <p className="mt-5 text-ink-soft">

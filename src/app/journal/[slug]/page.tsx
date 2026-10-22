@@ -5,6 +5,7 @@ import { abs, buildMetadata } from "@/lib/site";
 import { BRAND } from "@/lib/brand";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
+import { Reveal } from "@/components/Reveal";
 import { Pill, Section } from "@/components/ui";
 
 type Params = { slug: string };
@@ -63,6 +64,11 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
   return (
     <>
       <JsonLd data={articleJsonLd} />
+      {/* Thin gold line across the top that fills as the article is read. */}
+      <div
+        aria-hidden="true"
+        className="reading-progress fixed inset-x-0 top-0 z-50 h-[3px] bg-gradient-to-r from-gold-dark via-gold to-gold-light"
+      />
       <div className="container-vf pt-8">
         <Breadcrumbs
           items={[
@@ -73,21 +79,25 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
       </div>
       <Section className="!pt-8">
         <article className="container-vf max-w-3xl">
-          <time className="text-xs uppercase tracking-wide text-ink-soft">
-            {new Date(post.publishedAt).toLocaleDateString("en-GB", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
-          </time>
-          <h1 className="mt-3 text-4xl">{post.title}</h1>
-          <div className="rule-gold mt-4" />
-          <div className="mt-8">{renderBody(post.body)}</div>
-          <div className="mt-8 flex flex-wrap gap-2">
+          <Reveal>
+            <time className="text-xs uppercase tracking-wide text-ink-soft">
+              {new Date(post.publishedAt).toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
+            </time>
+            <h1 className="mt-3 text-4xl">{post.title}</h1>
+            <div className="rule-gold mt-4" />
+          </Reveal>
+          <Reveal soft delay={140} className="mt-8">
+            {renderBody(post.body)}
+          </Reveal>
+          <Reveal soft className="mt-8 flex flex-wrap gap-2">
             {post.tags.map((t) => (
               <Pill key={t}>{t}</Pill>
             ))}
-          </div>
+          </Reveal>
         </article>
       </Section>
     </>

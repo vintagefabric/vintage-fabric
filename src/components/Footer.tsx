@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BRAND, PHONES } from "@/lib/brand";
 import { LogoLockup } from "./Logo";
+import { revealDelay } from "./Reveal";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { MailIcon, PhoneIcon, PinIcon } from "./icons";
 
@@ -14,7 +15,7 @@ export function Footer() {
     <footer className="mt-12 bg-wine text-ivory">
       <div className="container-vf grid gap-12 py-14 md:grid-cols-3">
         {/* Brand */}
-        <div>
+        <div data-reveal="" style={revealDelay(0)}>
           <LogoLockup light />
           <p className="mt-4 max-w-xs text-sm text-ivory/80">
             {BRAND.tagline}. Premium printed & foil fabrics for kurti, dress,
@@ -26,7 +27,7 @@ export function Footer() {
         </div>
 
         {/* Contact */}
-        <div>
+        <div data-reveal="" style={revealDelay(120)}>
           <h3 className="text-ivory">Contact</h3>
           <div className="rule-gold mt-3" />
           <ul className="mt-5 space-y-4 text-sm text-ivory/90">
@@ -46,7 +47,7 @@ export function Footer() {
                   <a
                     key={p}
                     href={`tel:${p.replace(/[^+\d]/g, "")}`}
-                    className="block hover:text-gold"
+                    className="link-draw block w-fit hover:text-gold"
                   >
                     {p}
                   </a>
@@ -54,7 +55,7 @@ export function Footer() {
                 <span className="mt-2 block text-ivory/70">Accounts / Office</span>
                 <a
                   href={`tel:${PHONES.accounts.replace(/[^+\d]/g, "")}`}
-                  className="block hover:text-gold"
+                  className="link-draw block w-fit hover:text-gold"
                 >
                   {PHONES.accounts}
                 </a>
@@ -62,7 +63,7 @@ export function Footer() {
             </li>
             <li className="flex gap-3">
               <MailIcon className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
-              <a href={`mailto:${BRAND.email}`} className="hover:text-gold">
+              <a href={`mailto:${BRAND.email}`} className="link-draw hover:text-gold">
                 {BRAND.email}
               </a>
             </li>
@@ -70,20 +71,20 @@ export function Footer() {
         </div>
 
         {/* Explore + legal */}
-        <div>
+        <div data-reveal="" style={revealDelay(240)}>
           <h3 className="text-ivory">Explore</h3>
           <div className="rule-gold mt-3" />
           <ul className="mt-5 grid grid-cols-2 gap-2 text-sm text-ivory/90">
-            <li><Link href="/" className="hover:text-gold">Home</Link></li>
-            <li><Link href="/about" className="hover:text-gold">About</Link></li>
-            <li><Link href="/collections" className="hover:text-gold">Collections</Link></li>
-            <li><Link href="/catalog" className="hover:text-gold">Catalogue</Link></li>
-            <li><Link href="/journal" className="hover:text-gold">Journal</Link></li>
-            <li><Link href="/contact" className="hover:text-gold">Contact</Link></li>
-            <li><Link href="/inquiry" className="hover:text-gold">Inquiry</Link></li>
-            <li><Link href="/legal/privacy" className="hover:text-gold">Privacy</Link></li>
-            <li><Link href="/legal/terms" className="hover:text-gold">Terms</Link></li>
-            <li><Link href="/legal/export-policy" className="hover:text-gold">Export Policy</Link></li>
+            <li><Link href="/" className="link-draw hover:text-gold">Home</Link></li>
+            <li><Link href="/about" className="link-draw hover:text-gold">About</Link></li>
+            <li><Link href="/collections" className="link-draw hover:text-gold">Collections</Link></li>
+            <li><Link href="/catalog" className="link-draw hover:text-gold">Catalogue</Link></li>
+            <li><Link href="/journal" className="link-draw hover:text-gold">Journal</Link></li>
+            <li><Link href="/contact" className="link-draw hover:text-gold">Contact</Link></li>
+            <li><Link href="/inquiry" className="link-draw hover:text-gold">Inquiry</Link></li>
+            <li><Link href="/legal/privacy" className="link-draw hover:text-gold">Privacy</Link></li>
+            <li><Link href="/legal/terms" className="link-draw hover:text-gold">Terms</Link></li>
+            <li><Link href="/legal/export-policy" className="link-draw hover:text-gold">Export Policy</Link></li>
           </ul>
           <p className="mt-6 text-xs text-ivory/70">
             GSTIN: {BRAND.gstin}

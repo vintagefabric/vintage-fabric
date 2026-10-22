@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { getCollections, getDesigns, getFeaturedDesigns, getQualities } from "@/lib/data";
 import { BRAND } from "@/lib/brand";
@@ -7,7 +6,8 @@ import { buildMetadata, SITE_NAME } from "@/lib/site";
 import { LogoMark } from "@/components/Logo";
 import { DesignGrid } from "@/components/DesignCard";
 import { DesignMarquee } from "@/components/DesignMarquee";
-import { Reveal } from "@/components/Reveal";
+import { FadeImage } from "@/components/FadeImage";
+import { gridStagger, Reveal } from "@/components/Reveal";
 import { ArrowLink, Section, SectionHeading } from "@/components/ui";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 
@@ -102,40 +102,48 @@ export default async function HomePage() {
 
       {/* ── Our fabrics (by fabric type) ─────────────────────── */}
       <Section>
-        <Reveal className="container-vf">
+        <div className="container-vf">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
             <SectionHeading
               eyebrow="What we make"
               title="Our fabrics"
               intro="Every quality, beautifully shown. Browse by fabric type, with width, composition and finish."
             />
-            <ArrowLink href="/fabrics">All fabrics</ArrowLink>
+            <Reveal delay={150}>
+              <ArrowLink href="/fabrics">All fabrics</ArrowLink>
+            </Reveal>
           </div>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
-            {qualities.map((q) => (
-              <Link
-                key={q.id}
-                href={`/fabric/${q.code}`}
-                className="group relative overflow-hidden rounded-xl border border-gold/40 transition-colors hover:border-gold/70"
-              >
-                <div className="relative aspect-[4/5]">
-                  <Image
-                    src={q.heroImage}
-                    alt={`${q.name} fabric by Vintage Fabric`}
-                    fill
-                    sizes="(max-width: 640px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-wine/90 via-wine/20 to-transparent" />
-                </div>
-                <div className="absolute bottom-0 left-0 p-3 sm:p-5">
-                  <h3 className="text-base leading-snug text-ivory sm:text-xl">{q.name}</h3>
-                  <span className="text-xs text-gold sm:text-sm">{q.width} · View designs →</span>
-                </div>
-              </Link>
+            {qualities.map((q, i) => (
+              <div key={q.id} data-reveal="" style={gridStagger(i)}>
+                <Link
+                  href={`/fabric/${q.code}`}
+                  className="group relative block h-full overflow-hidden rounded-xl border border-gold/40 shadow-card transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-gold/70 hover:shadow-card-hover"
+                >
+                  <div className="relative aspect-[4/5]">
+                    <FadeImage
+                      src={q.heroImage}
+                      alt={`${q.name} fabric by Vintage Fabric`}
+                      fill
+                      sizes="(max-width: 640px) 50vw, 25vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-wine/90 via-wine/20 to-transparent" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 p-3 sm:p-5">
+                    <h3 className="text-base leading-snug text-ivory sm:text-xl">{q.name}</h3>
+                    <span className="text-xs text-gold sm:text-sm">
+                      {q.width} · View designs{" "}
+                      <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                        →
+                      </span>
+                    </span>
+                  </div>
+                </Link>
+              </div>
             ))}
           </div>
-        </Reveal>
+        </div>
       </Section>
 
       {/* ── Flowing design ribbon ────────────────────────────── */}
@@ -145,45 +153,52 @@ export default async function HomePage() {
           <h2 className="mt-2 text-3xl sm:text-4xl">Designs in motion</h2>
           <div className="rule-gold mx-auto mt-4" />
         </Reveal>
-        <DesignMarquee designs={allDesigns} />
+        <Reveal delay={150}>
+          <DesignMarquee designs={allDesigns} />
+        </Reveal>
       </section>
 
       {/* ── Latest series ────────────────────────────────────── */}
       <Section>
-        <Reveal className="container-vf">
+        <div className="container-vf">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
             <SectionHeading eyebrow="Design series" title="Latest collections" />
-            <ArrowLink href="/collections">All collections</ArrowLink>
+            <Reveal delay={150}>
+              <ArrowLink href="/collections">All collections</ArrowLink>
+            </Reveal>
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {collections.map((col) => (
-              <Link
-                key={col.id}
-                href={`/collections/${col.slug}`}
-                className="group overflow-hidden rounded-xl border border-gold/40 bg-wine text-ivory shadow-card transition-all hover:-translate-y-1 hover:border-gold/70 hover:shadow-card-hover"
-              >
-                <div className="relative aspect-[16/10] bg-wine-dark">
-                  <Image
-                    src={col.heroImage}
-                    alt={`${col.title} series by Vintage Fabric`}
-                    fill
-                    sizes="(max-width: 640px) 100vw, 25vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-xl text-ivory group-hover:text-gold">{col.title}</h3>
-                  <p className="mt-1 line-clamp-2 text-sm text-ivory/75">{col.description}</p>
-                </div>
-              </Link>
+            {collections.map((col, i) => (
+              <div key={col.id} data-reveal="" style={gridStagger(i)}>
+                <Link
+                  href={`/collections/${col.slug}`}
+                  className="group block h-full overflow-hidden rounded-xl border border-gold/40 bg-wine text-ivory shadow-card transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-gold/70 hover:shadow-card-hover"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden bg-wine-dark">
+                    <FadeImage
+                      src={col.heroImage}
+                      alt={`${col.title} series by Vintage Fabric`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 25vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-xl text-ivory transition-colors duration-300 group-hover:text-gold">
+                      {col.title}
+                    </h3>
+                    <p className="mt-1 line-clamp-2 text-sm text-ivory/75">{col.description}</p>
+                  </div>
+                </Link>
+              </div>
             ))}
           </div>
-        </Reveal>
+        </div>
       </Section>
 
       {/* ── Featured designs ─────────────────────────────────── */}
       <Section>
-        <Reveal className="container-vf">
+        <div className="container-vf">
           <SectionHeading
             eyebrow="From the catalogue"
             title="Featured designs"
@@ -192,31 +207,33 @@ export default async function HomePage() {
           <div className="mt-10">
             <DesignGrid designs={featured} />
           </div>
-        </Reveal>
+        </div>
       </Section>
 
       {/* ── Export / trust band ──────────────────────────────── */}
       <section className="bg-wine text-ivory">
-        <Reveal className="container-vf grid gap-8 py-14 text-center sm:grid-cols-3">
+        <div className="container-vf grid gap-8 py-14 text-center sm:grid-cols-3">
           {[
             { k: "Made in India", v: "Crafted with care and supplied to buyers across India and abroad." },
             { k: "Export ready", v: "Consistent widths (56\"/58\"), 100% cotton bases and dependable finishes." },
             { k: "Worldwide buyers", v: "Wholesale and export inquiries welcomed from every market." },
-          ].map((item) => (
-            <div key={item.k}>
+          ].map((item, i) => (
+            <Reveal key={item.k} delay={i * 140}>
               <h3 className="text-gold">{item.k}</h3>
-              <p className="mx-auto mt-2 max-w-xs text-sm text-ivory/85">{item.v}</p>
-            </div>
+              <div className="rule-gold mx-auto mt-3 !w-8 opacity-60" />
+              <p className="mx-auto mt-3 max-w-xs text-sm text-ivory/85">{item.v}</p>
+            </Reveal>
           ))}
-        </Reveal>
+        </div>
       </section>
 
       {/* ── Conversion CTA ───────────────────────────────────── */}
       <Section>
-        <Reveal className="container-vf">
-          <div className="rounded-2xl border border-gold/25 bg-white p-10 text-center shadow-card">
+        <div className="container-vf">
+          <Reveal className="rounded-2xl border border-gold/25 bg-white p-10 text-center shadow-card">
             <SectionHeading
               center
+              reveal={false}
               eyebrow="Let's work together"
               title="Request our catalogue or send an inquiry"
               intro="Tell us your market and the qualities you're after, and we'll get back with options, widths and lead times."
@@ -230,8 +247,8 @@ export default async function HomePage() {
               </Link>
               <WhatsAppButton />
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </Section>
     </>
   );

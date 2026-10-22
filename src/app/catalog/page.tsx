@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/site";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
 import { Section, SectionHeading } from "@/components/ui";
 
@@ -36,16 +37,18 @@ export default function CatalogPage() {
                 "All current series: UNIVERSE, SOULITAIRE, INDRIYA, SUNSHINE",
                 "Fabric type, width and finish for every quality",
                 "Design numbers for quick reordering",
-              ].map((point) => (
-                <li key={point} className="flex gap-3">
+              ].map((point, i) => (
+                <Reveal as="li" key={point} delay={140 + i * 90} className="flex gap-3">
                   <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
                   {point}
-                </li>
+                </Reveal>
               ))}
             </ul>
           </div>
 
-          <LeadForm type="catalog" />
+          <Reveal delay={180}>
+            <LeadForm type="catalog" />
+          </Reveal>
         </div>
       </Section>
     </>

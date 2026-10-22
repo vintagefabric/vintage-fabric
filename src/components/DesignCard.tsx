@@ -1,7 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { getCollectionById, getQualityById } from "@/lib/data";
 import type { Design } from "@/lib/types";
+import { FadeImage } from "./FadeImage";
+import { gridStagger } from "./Reveal";
 
 /** Card linking to a design's detail page. Wine tile with a light body. */
 export async function DesignCard({ design }: { design: Design }) {
@@ -11,17 +12,17 @@ export async function DesignCard({ design }: { design: Design }) {
   return (
     <Link
       href={`/design/${design.slug}`}
-      className="group flex flex-col overflow-hidden rounded-xl border border-gold/40 bg-wine text-ivory shadow-card
-                 transition-all duration-300 hover:-translate-y-1 hover:border-gold/70 hover:shadow-card-hover"
+      className="group flex h-full flex-col overflow-hidden rounded-xl border border-gold/40 bg-wine text-ivory shadow-card
+                 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-gold/70 hover:shadow-card-hover"
     >
       {/* 9:14 matches the catalogue photography, so nothing gets cropped. */}
       <div className="relative aspect-[9/14] overflow-hidden bg-white">
-        <Image
+        <FadeImage
           src={design.images.front.url}
           alt={design.images.front.alt}
           fill
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 300px"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover"
         />
         {design.images.colourways && design.images.colourways.length > 0 && (
           <span className="absolute bottom-2 right-2 rounded-full bg-gold px-2.5 py-1 text-[10px] font-medium text-wine-dark">
@@ -35,7 +36,7 @@ export async function DesignCard({ design }: { design: Design }) {
             {collection.title}
           </span>
         )}
-        <h3 className="font-display text-lg leading-snug text-ivory group-hover:text-gold">
+        <h3 className="font-display text-lg leading-snug text-ivory transition-colors duration-300 group-hover:text-gold">
           {design.title}
         </h3>
         <p className="font-display text-sm italic text-ivory/75">{design.designNo}</p>
@@ -62,8 +63,12 @@ export function DesignGrid({ designs }: { designs: Design[] }) {
   }
   return (
     <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
-      {designs.map((d) => (
-        <DesignCard key={d.id} design={d} />
+      {designs.map((d, i) => (
+        // The wrapper carries the reveal so it never overrides the card's
+        // own hover lift.
+        <div key={d.id} data-reveal="" style={gridStagger(i)}>
+          <DesignCard design={d} />
+        </div>
       ))}
     </div>
   );

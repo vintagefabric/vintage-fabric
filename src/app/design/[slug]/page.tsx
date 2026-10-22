@@ -11,6 +11,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { DesignGallery } from "@/components/DesignGallery";
 import { DesignGrid } from "@/components/DesignCard";
 import { JsonLd, productJsonLd } from "@/components/JsonLd";
+import { Reveal } from "@/components/Reveal";
 import { Pill, Section, SectionHeading } from "@/components/ui";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 
@@ -79,53 +80,64 @@ export default async function DesignPage({ params }: { params: Promise<Params> }
       <Section className="!pt-8">
         <div className="container-vf grid gap-10 lg:grid-cols-2">
           {/* Gallery */}
-          <DesignGallery images={design.images} />
+          <Reveal soft>
+            <DesignGallery images={design.images} />
+          </Reveal>
 
           {/* Details */}
           <div>
-            {collection && (
-              <Link
-                href={`/collections/${collection.slug}`}
-                className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark hover:text-wine"
-              >
-                {collection.title} series
-              </Link>
-            )}
-            <h1 className="mt-2 text-4xl">{design.title}</h1>
-            <p className="mt-2 text-ink-soft">{design.designNo}</p>
+            <Reveal delay={80}>
+              {collection && (
+                <Link
+                  href={`/collections/${collection.slug}`}
+                  className="link-draw text-xs font-semibold uppercase tracking-[0.2em] text-gold-dark hover:text-wine"
+                >
+                  {collection.title} series
+                </Link>
+              )}
+              <h1 className="mt-2 text-4xl">{design.title}</h1>
+              <p className="mt-2 text-ink-soft">{design.designNo}</p>
+            </Reveal>
 
-            <div className="mt-4 flex flex-wrap gap-2">
+            <Reveal delay={160} className="mt-4 flex flex-wrap gap-2">
               {quality && <Pill>{quality.fabricType}</Pill>}
               {quality && <Pill>{quality.width}</Pill>}
               {quality && <Pill>{quality.foil ? "Foil" : "Non-foil"}</Pill>}
-            </div>
+            </Reveal>
 
-            <p className="mt-6 text-ink-soft">{design.description}</p>
+            <Reveal delay={220} as="p" className="mt-6 text-ink-soft">
+              {design.description}
+            </Reveal>
 
             {/* Spec table */}
-            <dl className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-ink/10 bg-ink/10 sm:grid-cols-2">
-              {specs
-                .filter((s) => s.value)
-                .map((s) => (
-                  <div key={s.label} className="bg-white p-4">
-                    <dt className="text-xs uppercase tracking-wide text-ink-soft">{s.label}</dt>
-                    <dd className="mt-1 font-medium text-ink">{s.value}</dd>
-                  </div>
-                ))}
-            </dl>
+            <Reveal delay={280}>
+              <dl className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-ink/10 bg-ink/10 sm:grid-cols-2">
+                {specs
+                  .filter((s) => s.value)
+                  .map((s) => (
+                    <div key={s.label} className="bg-white p-4 transition-colors duration-300 hover:bg-cream">
+                      <dt className="text-xs uppercase tracking-wide text-ink-soft">{s.label}</dt>
+                      <dd className="mt-1 font-medium text-ink">{s.value}</dd>
+                    </div>
+                  ))}
+              </dl>
+            </Reveal>
 
             {/* Link to the fabric type */}
             {quality && (
-              <p className="mt-6 text-sm text-ink-soft">
+              <Reveal delay={320} as="p" className="mt-6 text-sm text-ink-soft">
                 Fabric:{" "}
-                <Link href={`/fabric/${quality.code}`} className="font-medium text-wine hover:text-gold-dark">
+                <Link
+                  href={`/fabric/${quality.code}`}
+                  className="link-draw font-medium text-wine hover:text-gold-dark"
+                >
                   {quality.name}
                 </Link>
-              </p>
+              </Reveal>
             )}
 
             {/* CTAs */}
-            <div className="mt-8 flex flex-wrap gap-3">
+            <Reveal delay={380} className="mt-8 flex flex-wrap gap-3">
               <Link
                 href={`/inquiry?ref=${encodeURIComponent(design.slug)}`}
                 className="btn-primary"
@@ -136,7 +148,7 @@ export default async function DesignPage({ params }: { params: Promise<Params> }
               <Link href="/catalog" className="btn-outline">
                 Request catalogue
               </Link>
-            </div>
+            </Reveal>
           </div>
         </div>
       </Section>

@@ -6,6 +6,8 @@
   :root {
     --font-display: "Cormorant Garamond", Georgia, serif;
     --font-sans: "Inter", system-ui, sans-serif;
+    /* One easing curve for all motion: quick start, long soft settle. */
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   html {
@@ -52,6 +54,99 @@
            px-6 py-3 text-sm font-medium tracking-wide text-wine transition-all
            hover:border-wine hover:bg-wine hover:text-ivory focus:outline-none
            focus:ring-2 focus:ring-gold;
+  }
+
+  /* Shared button motion: a gentle lift on hover and a soft press on click. */
+  .btn-primary,
+  .btn-gold,
+  .btn-outline {
+    @apply duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98];
+  }
+
+  /*
+   * Filled buttons get a slow band of light sweeping across on hover, like
+   * light moving over a foil finish. The band sits above the button colour but
+   * below its label (negative z-index inside an isolated stacking context).
+   */
+  .btn-primary,
+  .btn-gold {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .btn-primary::before,
+  .btn-gold::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(
+      110deg,
+      transparent 30%,
+      rgba(255, 250, 235, 0.3) 50%,
+      transparent 70%
+    );
+    transform: translateX(-130%);
+    transition: transform 0.9s var(--ease-out);
+  }
+  .btn-primary:hover::before,
+  .btn-gold:hover::before {
+    transform: translateX(130%);
+  }
+
+  /* Desktop nav link: a gold underline draws in on hover and marks the page. */
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 1.5px;
+    border-radius: 999px;
+    background: theme("colors.gold.DEFAULT");
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.4s var(--ease-out);
+  }
+  .nav-link:hover::after,
+  .nav-link[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+
+  /* Inline text link with an underline that draws in (wraps across lines). */
+  .link-draw {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition:
+      background-size 0.4s var(--ease-out),
+      color 0.2s ease;
+  }
+  .link-draw:hover {
+    background-size: 100% 1px;
+  }
+
+  /*
+   * Photography in cards: fades in once loaded (see FadeImage) and zooms
+   * slowly when its card is hovered. One class owns both transitions so they
+   * never fight each other.
+   */
+  .img-premium {
+    transition:
+      opacity 0.7s ease,
+      transform 1.1s var(--ease-out);
+  }
+  .group:hover .img-premium,
+  .group\/card:hover .img-premium {
+    transform: scale(1.06);
+  }
+  .img-premium.is-loading {
+    opacity: 0;
   }
 
   /* A thin gold divider rule */
@@ -106,26 +201,6 @@
     );
     transform: translateX(-160%);
     animation: vf-shimmer 6.5s ease-in-out infinite;
-  }
-
-  /* Scroll-reveal: sections gently fade and rise into view (see Reveal.tsx). */
-  .reveal {
-    opacity: 0;
-    transform: translateY(18px);
-    transition:
-      opacity 0.65s ease,
-      transform 0.65s ease;
-  }
-  .reveal-shown {
-    opacity: 1;
-    transform: none;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .reveal {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
   }
 
   /* Hide the scrollbar on horizontally-scrollable rows (e.g. admin nav). */
@@ -283,7 +358,185 @@
   }
 }
 
-/* Respect users who prefer reduced motion. */
+/* ─────────────────────────────────────────────────────────────────────────
+   Motion system
+
+   [data-reveal] marks anything that should rise into place. Two paths, so
+   nothing visible is ever hidden waiting for JavaScript:
+
+   1. On screen at load: a pure-CSS entrance animation plays straight away
+      (staggered by --enter-delay). Works with JS disabled or still loading.
+   2. Below the fold: MotionObserver arms the element (data-armed), which
+      hides it while it is still off screen, then adds .is-revealed as it
+      scrolls in (staggered by --reveal-delay).
+
+   Always put data-reveal on a wrapper, never on an element that has its own
+   hover transform, or the reveal transition would override it.
+   ───────────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  /* Whole-page fade on every navigation (see app/template.tsx). Opacity only,
+     so it never creates a containing block for fixed/sticky children. */
+  .page-enter {
+    animation: vf-fade 0.45s ease-out backwards;
+  }
+
+  [data-reveal] {
+    animation: vf-rise 0.85s var(--ease-out) backwards;
+    animation-delay: var(--enter-delay, var(--reveal-delay, 0ms));
+  }
+  [data-reveal="soft"] {
+    animation-name: vf-rise-soft;
+  }
+
+  [data-reveal][data-armed] {
+    animation: none;
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    transition:
+      opacity 0.8s var(--ease-out),
+      transform 0.95s var(--ease-out);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  [data-reveal="soft"][data-armed] {
+    transform: translate3d(0, 12px, 0);
+  }
+  [data-reveal][data-armed].is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Gold rules inside a revealed block draw in from the left (or centre). */
+  [data-reveal] .rule-gold {
+    transform-origin: left center;
+    animation: vf-draw 1s var(--ease-out) backwards;
+    animation-delay: calc(var(--enter-delay, var(--reveal-delay, 0ms)) + 0.25s);
+  }
+  [data-reveal] .rule-gold.mx-auto {
+    transform-origin: center;
+  }
+  [data-reveal][data-armed] .rule-gold {
+    animation: none;
+    transform: scaleX(0);
+    transition: transform 1.1s var(--ease-out) calc(var(--reveal-delay, 0ms) + 0.3s);
+  }
+  [data-reveal][data-armed].is-revealed .rule-gold {
+    transform: none;
+  }
+
+  /* Series hero photo: a slow settle from a slight zoom on arrival. */
+  .animate-kenburns {
+    animation: vf-kenburns 2.6s var(--ease-out) backwards;
+  }
+
+  /* Design gallery: each newly chosen view fades softly into place. */
+  .animate-view-in {
+    animation: vf-view-in 0.55s var(--ease-out) backwards;
+  }
+
+  /* Mobile menu panel and its links slide down in sequence when opened. */
+  .animate-menu-in {
+    animation: vf-menu-in 0.35s var(--ease-out) backwards;
+  }
+  .animate-menu-item {
+    animation: vf-rise-soft 0.45s var(--ease-out) backwards;
+  }
+
+  /* Success panels (form submitted) settle in with a small scale. */
+  .animate-pop-in {
+    animation: vf-pop-in 0.6s var(--ease-out) backwards;
+  }
+
+  /* WhatsApp button arrives shortly after the page, then stays put. */
+  .animate-float-in {
+    animation: vf-float-in 0.7s var(--ease-out) 0.9s backwards;
+  }
+
+  /* Reading progress for journal articles, driven by scroll position alone
+     (no JS). Browsers without scroll timelines simply don't show it. */
+  @supports (animation-timeline: scroll()) {
+    .reading-progress {
+      display: block;
+      transform-origin: left center;
+      animation: vf-progress linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+}
+
+.reading-progress {
+  display: none;
+}
+
+@keyframes vf-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes vf-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+}
+
+@keyframes vf-rise-soft {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+}
+
+@keyframes vf-draw {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes vf-kenburns {
+  from {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes vf-view-in {
+  from {
+    opacity: 0;
+    transform: scale(1.025);
+  }
+}
+
+@keyframes vf-menu-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes vf-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+@keyframes vf-float-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.8);
+  }
+}
+
+@keyframes vf-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Respect users who prefer reduced motion: everything lands instantly. */
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
   .animate-halo,
@@ -293,5 +546,13 @@
   }
   .foil-shimmer::after {
     display: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -23,15 +23,21 @@ export function SectionHeading({
   intro,
   center = false,
   as: Heading = "h2",
+  reveal = true,
 }: {
   eyebrow?: string;
   title: string;
   intro?: string;
   center?: boolean;
   as?: "h1" | "h2";
+  /** Rise into place (default). Turn off inside a block that already reveals. */
+  reveal?: boolean;
 }) {
   return (
-    <div className={center ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
+    <div
+      data-reveal={reveal ? "" : undefined}
+      className={center ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}
+    >
       {eyebrow && <p className="eyebrow">{eyebrow}</p>}
       <Heading className="mt-2 text-3xl sm:text-4xl">{title}</Heading>
       <div className={`rule-gold mt-4 ${center ? "mx-auto" : ""}`} />
@@ -45,10 +51,10 @@ export function ArrowLink({ href, children }: { href: string; children: ReactNod
   return (
     <Link
       href={href}
-      className="group inline-flex items-center gap-1.5 text-sm font-medium text-wine hover:text-gold-dark"
+      className="group inline-flex items-center gap-1.5 text-sm font-medium text-wine transition-colors duration-300 hover:text-gold-dark"
     >
       {children}
-      <span className="transition-transform group-hover:translate-x-1">→</span>
+      <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
     </Link>
   );
 }

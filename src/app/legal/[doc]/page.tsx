@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { buildMetadata } from "@/lib/site";
 import { BRAND } from "@/lib/brand";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/ui";
 
 type Params = { doc: string };
@@ -212,12 +213,14 @@ export default async function LegalPage({ params }: { params: Promise<Params> })
       </div>
       <Section className="!pt-8">
         <article className="container-vf max-w-3xl">
-          <h1 className="text-4xl">{found.title}</h1>
-          <div className="rule-gold mt-4" />
-          <p className="mt-6 text-ink-soft">{found.intro}</p>
+          <Reveal>
+            <h1 className="text-4xl">{found.title}</h1>
+            <div className="rule-gold mt-4" />
+            <p className="mt-6 text-ink-soft">{found.intro}</p>
+          </Reveal>
           <div className="mt-8 space-y-8">
             {found.sections.map((s) => (
-              <section key={s.h}>
+              <Reveal as="section" soft key={s.h}>
                 <h2 className="text-xl">{s.h}</h2>
                 {s.p && <p className="mt-2 text-ink-soft">{s.p}</p>}
                 {s.list && (
@@ -230,7 +233,7 @@ export default async function LegalPage({ params }: { params: Promise<Params> })
                     ))}
                   </ul>
                 )}
-              </section>
+              </Reveal>
             ))}
           </div>
           <p className="mt-10 border-t border-line pt-6 text-xs text-ink-soft">

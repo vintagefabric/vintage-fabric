@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppButton";
 import { JsonLd, organizationJsonLd } from "@/components/JsonLd";
+import { MotionObserver } from "@/components/MotionObserver";
 import { BRAND } from "@/lib/brand";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -68,6 +69,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppFloat />
+        <MotionObserver />
         <Analytics />
       </body>
     </html>

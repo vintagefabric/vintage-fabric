@@ -3,6 +3,7 @@ import Link from "next/link";
 import { buildMetadata } from "@/lib/site";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { LogoMark } from "@/components/Logo";
+import { gridStagger, Reveal } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/ui";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { BRAND, PHONES } from "@/lib/brand";
@@ -26,7 +27,7 @@ export default function AboutPage() {
         <div className="container-vf grid items-center gap-12 lg:grid-cols-[1.4fr_1fr]">
           <div>
             <SectionHeading as="h1" eyebrow="Our story" title="Mfg. of Quality Fabrics" />
-            <div className="mt-6 space-y-4 text-ink-soft">
+            <Reveal delay={120} className="mt-6 space-y-4 text-ink-soft">
               <p>
                 Vintage Fabric works out of New Cloth Market in Ahmedabad,
                 one of the busiest cloth markets in the country. It is a fast,
@@ -70,24 +71,30 @@ export default function AboutPage() {
                 honestly what is running, what is available in the widths you need,
                 and what we can make to order.
               </p>
-            </div>
-            <div className="mt-8 flex flex-wrap gap-3">
+            </Reveal>
+            <Reveal delay={200} className="mt-8 flex flex-wrap gap-3">
               <Link href="/collections" className="btn-primary">
                 Explore collections
               </Link>
               <WhatsAppButton />
-            </div>
+            </Reveal>
           </div>
 
-          <div className="flex justify-center">
-            <LogoMark size={300} className="h-auto w-[200px] sm:w-[260px] lg:w-[300px]" />
-          </div>
+          <Reveal delay={240} className="relative flex justify-center">
+            <div
+              className="gold-halo animate-halo pointer-events-none absolute inset-0 m-auto h-[14rem] w-[14rem] sm:h-[18rem] sm:w-[18rem] lg:h-[22rem] lg:w-[22rem]"
+              aria-hidden="true"
+            />
+            <div className="animate-float relative">
+              <LogoMark size={300} className="h-auto w-[200px] sm:w-[260px] lg:w-[300px]" />
+            </div>
+          </Reveal>
         </div>
       </Section>
 
       {/* Founders' quote */}
       <section className="bg-wine text-ivory">
-        <div className="container-vf py-8 text-center">
+        <Reveal className="container-vf py-8 text-center">
           <span className="font-display text-5xl leading-none text-gold">&ldquo;</span>
           <p className="mx-auto -mt-3 max-w-2xl font-display text-2xl italic leading-relaxed text-ivory sm:text-3xl">
             We would rather be known for the fabric a buyer orders again than the
@@ -96,7 +103,7 @@ export default function AboutPage() {
           <p className="mt-6 text-xs uppercase tracking-[0.25em] text-gold">
             Abhishek &amp; Aditya, Founders
           </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* How we work */}
@@ -104,7 +111,7 @@ export default function AboutPage() {
         <div className="container-vf">
           <div className="max-w-3xl">
             <SectionHeading eyebrow="How we work" title="From base cloth to finished roll" />
-            <div className="mt-6 space-y-4 text-ink-soft">
+            <Reveal soft delay={120} className="mt-6 space-y-4 text-ink-soft">
             <p>
               It starts with the base. We choose cotton that takes a print cleanly
               and feels right in the hand, because no amount of finishing rescues a
@@ -122,7 +129,7 @@ export default function AboutPage() {
               of consistency is quiet and easy to overlook, but it is usually the
               reason a buyer comes back the second time.
             </p>
-            </div>
+            </Reveal>
           </div>
         </div>
       </Section>
@@ -155,11 +162,13 @@ export default function AboutPage() {
               t: "Built on reorders",
               d: "Most of our business is repeat business. We treat the second order as the real test of a fabric, and we work to earn it every single time.",
             },
-          ].map((v) => (
-            <div key={v.t} className="rounded-xl border border-line bg-white p-6 shadow-card">
-              <h3 className="text-xl">{v.t}</h3>
-              <div className="rule-gold mt-3" />
-              <p className="mt-3 text-sm leading-relaxed text-ink-soft">{v.d}</p>
+          ].map((v, i) => (
+            <div key={v.t} data-reveal="" style={gridStagger(i, 3, 110)}>
+              <div className="h-full rounded-xl border border-line bg-white p-6 shadow-card transition-all duration-500 ease-out hover:-translate-y-1 hover:border-gold/50 hover:shadow-card-hover">
+                <h3 className="text-xl">{v.t}</h3>
+                <div className="rule-gold mt-3" />
+                <p className="mt-3 text-sm leading-relaxed text-ink-soft">{v.d}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -168,7 +177,7 @@ export default function AboutPage() {
       {/* Business details */}
       <Section className="!pt-8 !pb-10">
         <div className="container-vf">
-          <div className="rounded-2xl border border-gold/25 bg-white p-8 shadow-card">
+          <Reveal className="rounded-2xl border border-gold/25 bg-white p-8 shadow-card">
             <h3 className="text-2xl">Business details</h3>
             <div className="rule-gold mt-3" />
             <dl className="mt-6 grid gap-6 sm:grid-cols-2">
@@ -214,7 +223,7 @@ export default function AboutPage() {
                 </dd>
               </div>
             </dl>
-          </div>
+          </Reveal>
         </div>
       </Section>
     </>

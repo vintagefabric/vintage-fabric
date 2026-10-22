@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { getCollections, getDesigns } from "@/lib/data";
 import { buildMetadata } from "@/lib/site";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { FadeImage } from "@/components/FadeImage";
+import { gridStagger } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/ui";
 
 // Render from live Supabase data at request time, never frozen at build
@@ -35,31 +36,37 @@ export default async function CollectionsPage() {
             intro="Each series is a themed set of designs. Explore the story, then browse the fabrics."
           />
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            {collections.map((col) => {
+            {collections.map((col, i) => {
               const count = countFor(col.id);
               return (
-                <Link
-                  key={col.id}
-                  href={`/collections/${col.slug}`}
-                  className="group grid overflow-hidden rounded-xl border border-line bg-white shadow-card transition-all hover:shadow-card-hover sm:grid-cols-2"
-                >
-                  <div className="relative aspect-[4/3] sm:aspect-auto">
-                    <Image
-                      src={col.heroImage}
-                      alt={`${col.title} series by Vintage Fabric`}
-                      fill
-                      sizes="(max-width: 640px) 100vw, 300px"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="flex flex-col p-6">
-                    <h2 className="text-2xl text-wine group-hover:text-gold-dark">{col.title}</h2>
-                    <p className="mt-2 flex-1 text-sm text-ink-soft">{col.description}</p>
-                    <span className="mt-4 text-xs font-medium uppercase tracking-wide text-gold-dark">
-                      {count} {count === 1 ? "design" : "designs"} →
-                    </span>
-                  </div>
-                </Link>
+                <div key={col.id} data-reveal="" style={gridStagger(i, 2, 120)}>
+                  <Link
+                    href={`/collections/${col.slug}`}
+                    className="group grid h-full overflow-hidden rounded-xl border border-line bg-white shadow-card transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-gold/50 hover:shadow-card-hover sm:grid-cols-2"
+                  >
+                    <div className="relative aspect-[4/3] overflow-hidden sm:aspect-auto">
+                      <FadeImage
+                        src={col.heroImage}
+                        alt={`${col.title} series by Vintage Fabric`}
+                        fill
+                        sizes="(max-width: 640px) 100vw, 300px"
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="flex flex-col p-6">
+                      <h2 className="text-2xl text-wine transition-colors duration-300 group-hover:text-gold-dark">
+                        {col.title}
+                      </h2>
+                      <p className="mt-2 flex-1 text-sm text-ink-soft">{col.description}</p>
+                      <span className="mt-4 text-xs font-medium uppercase tracking-wide text-gold-dark">
+                        {count} {count === 1 ? "design" : "designs"}{" "}
+                        <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                          →
+                        </span>
+                      </span>
+                    </div>
+                  </Link>
+                </div>
               );
             })}
           </div>

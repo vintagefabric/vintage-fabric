@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { getDesigns, getQualities } from "@/lib/data";
 import { buildMetadata } from "@/lib/site";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { FadeImage } from "@/components/FadeImage";
+import { gridStagger } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/ui";
 
 // Render from live Supabase data at request time, never frozen at build
@@ -35,34 +36,38 @@ export default async function FabricsPage() {
             intro="Source by fabric type. Every quality lists its width, composition and finish, and the designs woven on it."
           />
           <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
-            {qualities.map((q) => {
+            {qualities.map((q, i) => {
               const count = countFor(q.id);
               return (
-                <Link
-                  key={q.id}
-                  href={`/fabric/${q.code}`}
-                  className="group relative overflow-hidden rounded-xl border border-gold/40 transition-colors hover:border-gold/70"
-                >
-                  <div className="relative aspect-[4/5]">
-                    <Image
-                      src={q.heroImage}
-                      alt={`${q.name} fabric by Vintage Fabric`}
-                      fill
-                      sizes="(max-width: 640px) 50vw, 25vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-wine/90 via-wine/20 to-transparent" />
-                  </div>
-                  <div className="absolute bottom-0 left-0 p-3 sm:p-5">
-                    <h2 className="text-base leading-snug text-ivory sm:text-xl">{q.name}</h2>
-                    <p className="mt-1 text-xs text-gold">
-                      {q.width} · {q.foil ? "Foil" : "Non-foil"}
-                    </p>
-                    <span className="mt-1 block text-xs text-ivory/80">
-                      {count} {count === 1 ? "design" : "designs"} →
-                    </span>
-                  </div>
-                </Link>
+                <div key={q.id} data-reveal="" style={gridStagger(i)}>
+                  <Link
+                    href={`/fabric/${q.code}`}
+                    className="group relative block h-full overflow-hidden rounded-xl border border-gold/40 shadow-card transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-gold/70 hover:shadow-card-hover"
+                  >
+                    <div className="relative aspect-[4/5]">
+                      <FadeImage
+                        src={q.heroImage}
+                        alt={`${q.name} fabric by Vintage Fabric`}
+                        fill
+                        sizes="(max-width: 640px) 50vw, 25vw"
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-wine/90 via-wine/20 to-transparent" />
+                    </div>
+                    <div className="absolute bottom-0 left-0 p-3 sm:p-5">
+                      <h2 className="text-base leading-snug text-ivory sm:text-xl">{q.name}</h2>
+                      <p className="mt-1 text-xs text-gold">
+                        {q.width} · {q.foil ? "Foil" : "Non-foil"}
+                      </p>
+                      <span className="mt-1 block text-xs text-ivory/80">
+                        {count} {count === 1 ? "design" : "designs"}{" "}
+                        <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                          →
+                        </span>
+                      </span>
+                    </div>
+                  </Link>
+                </div>
               );
             })}
           </div>

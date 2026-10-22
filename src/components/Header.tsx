@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LogoLockup } from "./Logo";
 import { WhatsAppButton } from "./WhatsAppButton";
@@ -15,8 +16,12 @@ const NAV = [
 ];
 
 export function Header() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   // A brighter gold keyline appears under the bar once the page scrolls,
   // so the sticky header reads as a deliberate edge over the content.
@@ -40,15 +45,21 @@ export function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
-          {NAV.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm tracking-wide text-ivory/90 transition-colors hover:text-gold"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {NAV.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={active ? "page" : undefined}
+                className={`nav-link text-sm tracking-wide transition-colors duration-300 hover:text-gold ${
+                  active ? "text-gold" : "text-ivory/90"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
           <Link href="/inquiry" className="btn-gold !py-2">
             Inquire
           </Link>
@@ -64,13 +75,24 @@ export function Header() {
           aria-label="Toggle menu"
           onClick={() => setOpen((v) => !v)}
         >
-          <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2">
-            {open ? (
-              <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
-            ) : (
-              <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
-            )}
-          </svg>
+          {/* Three bars that morph into a cross. */}
+          <span aria-hidden="true" className="relative block h-4 w-6">
+            <span
+              className={`absolute left-0 top-0 h-0.5 w-6 rounded-full bg-current transition-transform duration-300 ease-out ${
+                open ? "translate-y-[7px] rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`absolute left-0 top-[7px] h-0.5 w-6 rounded-full bg-current transition-opacity duration-200 ${
+                open ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`absolute left-0 top-[14px] h-0.5 w-6 rounded-full bg-current transition-transform duration-300 ease-out ${
+                open ? "-translate-y-[7px] -rotate-45" : ""
+              }`}
+            />
+          </span>
         </button>
       </div>
 
@@ -78,21 +100,31 @@ export function Header() {
       {open && (
         <nav
           id="mobile-nav"
-          className="border-t border-gold/30 bg-wine-dark lg:hidden"
+          className="animate-menu-in border-t border-gold/30 bg-wine-dark lg:hidden"
           aria-label="Primary mobile"
         >
           <div className="container-vf flex flex-col gap-1 py-4">
-            {NAV.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="rounded-md px-2 py-2 text-ivory/90 hover:bg-wine hover:text-gold"
-              >
-                {item.label}
-              </Link>
-            ))}
-            <div className="mt-3 flex flex-col gap-3 px-2">
+            {NAV.map((item, i) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={active ? "page" : undefined}
+                  style={{ animationDelay: `${60 + i * 45}ms` }}
+                  className={`animate-menu-item rounded-md px-2 py-2 transition-colors hover:bg-wine hover:text-gold ${
+                    active ? "text-gold" : "text-ivory/90"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+            <div
+              className="animate-menu-item mt-3 flex flex-col gap-3 px-2"
+              style={{ animationDelay: `${60 + NAV.length * 45}ms` }}
+            >
               <Link href="/inquiry" className="btn-gold w-full" onClick={() => setOpen(false)}>
                 Inquire
               </Link>
